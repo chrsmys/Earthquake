@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  CAMEventDetailViewController.h
 //  Earthquake
 //
 //  Created by Chris Mays on 2/20/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface CAMEventDetailViewController : UITableViewController
 
 @end
-

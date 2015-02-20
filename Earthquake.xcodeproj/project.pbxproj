@@ -9,11 +9,15 @@
 /* Begin PBXBuildFile section */
 		9123320A1A97C69500D78FCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 912332091A97C69500D78FCF /* main.m */; };
 		9123320D1A97C69500D78FCF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9123320C1A97C69500D78FCF /* AppDelegate.m */; };
-		912332101A97C69500D78FCF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9123320F1A97C69500D78FCF /* ViewController.m */; };
+		912332101A97C69500D78FCF /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9123320F1A97C69500D78FCF /* MasterViewController.m */; };
 		912332131A97C69500D78FCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 912332111A97C69500D78FCF /* Main.storyboard */; };
 		912332151A97C69500D78FCF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 912332141A97C69500D78FCF /* Images.xcassets */; };
 		912332181A97C69600D78FCF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 912332161A97C69600D78FCF /* LaunchScreen.xib */; };
 		912332241A97C69600D78FCF /* EarthquakeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 912332231A97C69600D78FCF /* EarthquakeTests.m */; };
+		9123322F1A97C78800D78FCF /* CAMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9123322E1A97C78800D78FCF /* CAMMapViewController.m */; };
+		912332311A97C7A300D78FCF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 912332301A97C7A300D78FCF /* MapKit.framework */; };
+		912332371A97D35F00D78FCF /* CAMSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912332361A97D35F00D78FCF /* CAMSettingsTableViewController.m */; };
+		9123323A1A97D3BE00D78FCF /* CAMEventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912332391A97D3BE00D78FCF /* CAMEventDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +36,22 @@
 		912332091A97C69500D78FCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9123320B1A97C69500D78FCF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9123320C1A97C69500D78FCF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9123320E1A97C69500D78FCF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9123320F1A97C69500D78FCF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9123320E1A97C69500D78FCF /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		9123320F1A97C69500D78FCF /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		912332121A97C69500D78FCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		912332141A97C69500D78FCF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		912332171A97C69600D78FCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9123321D1A97C69600D78FCF /* EarthquakeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarthquakeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		912332221A97C69600D78FCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		912332231A97C69600D78FCF /* EarthquakeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EarthquakeTests.m; sourceTree = "<group>"; };
+		9123322D1A97C78800D78FCF /* CAMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMMapViewController.h; sourceTree = "<group>"; };
+		9123322E1A97C78800D78FCF /* CAMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAMMapViewController.m; sourceTree = "<group>"; };
+		912332301A97C7A300D78FCF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		912332321A97CA5400D78FCF /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		912332351A97D35F00D78FCF /* CAMSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMSettingsTableViewController.h; sourceTree = "<group>"; };
+		912332361A97D35F00D78FCF /* CAMSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAMSettingsTableViewController.m; sourceTree = "<group>"; };
+		912332381A97D3BE00D78FCF /* CAMEventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMEventDetailViewController.h; sourceTree = "<group>"; };
+		912332391A97D3BE00D78FCF /* CAMEventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAMEventDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				912332311A97C7A300D78FCF /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 		912331FB1A97C69500D78FCF = {
 			isa = PBXGroup;
 			children = (
+				912332301A97C7A300D78FCF /* MapKit.framework */,
 				912332061A97C69500D78FCF /* Earthquake */,
 				912332201A97C69600D78FCF /* EarthquakeTests */,
 				912332051A97C69500D78FCF /* Products */,
@@ -83,8 +97,8 @@
 			children = (
 				9123320B1A97C69500D78FCF /* AppDelegate.h */,
 				9123320C1A97C69500D78FCF /* AppDelegate.m */,
-				9123320E1A97C69500D78FCF /* ViewController.h */,
-				9123320F1A97C69500D78FCF /* ViewController.m */,
+				912332341A97D31E00D78FCF /* Master */,
+				912332331A97D30E00D78FCF /* Detail */,
 				912332111A97C69500D78FCF /* Main.storyboard */,
 				912332141A97C69500D78FCF /* Images.xcassets */,
 				912332161A97C69600D78FCF /* LaunchScreen.xib */,
@@ -96,6 +110,7 @@
 		912332071A97C69500D78FCF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				912332321A97CA5400D78FCF /* fontawesome-webfont.ttf */,
 				912332081A97C69500D78FCF /* Info.plist */,
 				912332091A97C69500D78FCF /* main.m */,
 			);
@@ -117,6 +132,28 @@
 				912332221A97C69600D78FCF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		912332331A97D30E00D78FCF /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				9123322D1A97C78800D78FCF /* CAMMapViewController.h */,
+				9123322E1A97C78800D78FCF /* CAMMapViewController.m */,
+				912332351A97D35F00D78FCF /* CAMSettingsTableViewController.h */,
+				912332361A97D35F00D78FCF /* CAMSettingsTableViewController.m */,
+				912332381A97D3BE00D78FCF /* CAMEventDetailViewController.h */,
+				912332391A97D3BE00D78FCF /* CAMEventDetailViewController.m */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		912332341A97D31E00D78FCF /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				9123320E1A97C69500D78FCF /* MasterViewController.h */,
+				9123320F1A97C69500D78FCF /* MasterViewController.m */,
+			);
+			name = Master;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +256,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				912332101A97C69500D78FCF /* ViewController.m in Sources */,
+				9123323A1A97D3BE00D78FCF /* CAMEventDetailViewController.m in Sources */,
+				912332101A97C69500D78FCF /* MasterViewController.m in Sources */,
+				912332371A97D35F00D78FCF /* CAMSettingsTableViewController.m in Sources */,
 				9123320D1A97C69500D78FCF /* AppDelegate.m in Sources */,
 				9123320A1A97C69500D78FCF /* main.m in Sources */,
+				9123322F1A97C78800D78FCF /* CAMMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

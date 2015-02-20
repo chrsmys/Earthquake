@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 Chris Mays. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MasterViewController.h"
 
-@interface ViewController ()
+@interface MasterViewController ()
 
 @end
 
-@implementation ViewController
+@implementation MasterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
