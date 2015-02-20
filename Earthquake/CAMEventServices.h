@@ -10,4 +10,7 @@
 
 @interface CAMEventServices : NSObject
 
+@property (nonatomic, retain, readonly) CAMEventServices *sharedInstance;
+@property (nonatomic, retain) NSMutableArray *eventList;
+
 @end
