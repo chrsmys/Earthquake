@@ -10,4 +10,6 @@
 
 @interface CAMSettingsServices : NSObject
 
+@property (nonatomic, retain, readonly) CAMSettingsServices *sharedInstance;
+
 @end

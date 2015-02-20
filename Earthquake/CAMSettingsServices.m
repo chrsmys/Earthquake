@@ -9,5 +9,15 @@
 #import "CAMSettingsServices.h"
 
 @implementation CAMSettingsServices
+@synthesize sharedInstance=_sharedInstance;
+
+#pragma mark - Shared Instance
+
+-(CAMSettingsServices *)sharedInstance{
+    if(!_sharedInstance){
+        _sharedInstance=[[CAMSettingsServices alloc] init];
+    }
+    return _sharedInstance;
+}
 
 @end
