@@ -20,6 +20,7 @@
 		9123323A1A97D3BE00D78FCF /* CAMEventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912332391A97D3BE00D78FCF /* CAMEventDetailViewController.m */; };
 		9123323E1A97D77000D78FCF /* CAMSettingsServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 9123323D1A97D77000D78FCF /* CAMSettingsServices.m */; };
 		912332411A97D7B200D78FCF /* CAMEventServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 912332401A97D7B200D78FCF /* CAMEventServices.m */; };
+		912332451A97E1F400D78FCF /* CamEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 912332441A97E1F400D78FCF /* CamEvent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		9123323D1A97D77000D78FCF /* CAMSettingsServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAMSettingsServices.m; sourceTree = "<group>"; };
 		9123323F1A97D7B200D78FCF /* CAMEventServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMEventServices.h; sourceTree = "<group>"; };
 		912332401A97D7B200D78FCF /* CAMEventServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAMEventServices.m; sourceTree = "<group>"; };
+		912332431A97E1F400D78FCF /* CamEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CamEvent.h; sourceTree = "<group>"; };
+		912332441A97E1F400D78FCF /* CamEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CamEvent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,7 @@
 			children = (
 				9123320B1A97C69500D78FCF /* AppDelegate.h */,
 				9123320C1A97C69500D78FCF /* AppDelegate.m */,
+				912332421A97E1C800D78FCF /* Events */,
 				9123323B1A97D72D00D78FCF /* Services */,
 				912332341A97D31E00D78FCF /* Master */,
 				912332331A97D30E00D78FCF /* Detail */,
@@ -172,6 +176,15 @@
 				912332401A97D7B200D78FCF /* CAMEventServices.m */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		912332421A97E1C800D78FCF /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				912332431A97E1F400D78FCF /* CamEvent.h */,
+				912332441A97E1F400D78FCF /* CamEvent.m */,
+			);
+			name = Events;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +293,7 @@
 				912332371A97D35F00D78FCF /* CAMSettingsTableViewController.m in Sources */,
 				912332411A97D7B200D78FCF /* CAMEventServices.m in Sources */,
 				9123320D1A97C69500D78FCF /* AppDelegate.m in Sources */,
+				912332451A97E1F400D78FCF /* CamEvent.m in Sources */,
 				9123320A1A97C69500D78FCF /* main.m in Sources */,
 				9123322F1A97C78800D78FCF /* CAMMapViewController.m in Sources */,
 			);
