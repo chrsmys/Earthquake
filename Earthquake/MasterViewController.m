@@ -10,13 +10,26 @@
 
 @interface MasterViewController ()
 
+//determines whether Master is displayed in compact enviornment
+@property (nonatomic) BOOL collapseSecondaryViewOnPrimary;
+
 @end
 
 @implementation MasterViewController
 
 - (void)viewDidLoad {
+    
+    self.splitViewController.delegate=self;
+    [self setCollapseSecondaryViewOnPrimary:true];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+#pragma MARK - SplitViewControllerDelegate
+
+-(BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController{
+    return self.collapseSecondaryViewOnPrimary;
 }
 
 - (void)didReceiveMemoryWarning {
