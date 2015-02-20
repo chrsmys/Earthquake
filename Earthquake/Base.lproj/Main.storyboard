@@ -38,6 +38,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="eventMapView" destination="yw4-h3-xsL" id="INs-cX-Wrc"/>
                         <segue destination="cQt-Ar-1uO" kind="presentation" identifier="ShowAnnotationDetail" id="MxT-fe-1jv"/>
                     </connections>
                 </viewController>

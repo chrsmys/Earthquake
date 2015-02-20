@@ -13,6 +13,7 @@
 @end
 
 @implementation CAMMapViewController
+@synthesize eventMapView=_eventMapView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
