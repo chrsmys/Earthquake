@@ -25,6 +25,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)setEventList:(NSArray *)eventList{
+    _eventList=eventList;
+    [self updateMapAnnotations];
+}
+
+-(void)updateMapAnnotations{
+    
+}
+
 /*
 #pragma mark - Navigation
 

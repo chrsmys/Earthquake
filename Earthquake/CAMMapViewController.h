@@ -10,5 +10,5 @@
 #import <MapKit/MapKit.h>
 @interface CAMMapViewController : UIViewController
 @property (weak, nonatomic) IBOutlet MKMapView *eventMapView;
-
+@property (nonatomic, strong) NSArray *eventList;
 @end
