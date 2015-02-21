@@ -10,6 +10,7 @@
 
 @interface CAMEventServices : NSObject{
     NSDate *lastRefreshDate;
+    BOOL eventListUnordered;
 }
 
 -(void)refreshEvents;

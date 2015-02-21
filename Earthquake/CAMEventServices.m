@@ -8,7 +8,7 @@
 
 #import "CAMEventServices.h"
 #import "NSDateFormatter+Constructors.h"
-
+#import "CamEvent.h"
 @implementation CAMEventServices{
     
 }
@@ -22,6 +22,7 @@ static CAMEventServices *sharedInstance;
     self=[super init];
     if(self){
         _eventList=[[NSMutableArray alloc] init];
+        eventListUnordered = false; //An empty eventlist is ordered
     }
     return self;
 }
@@ -31,8 +32,18 @@ static CAMEventServices *sharedInstance;
 }
 
 -(NSArray *)eventList{
+    if(eventListUnordered){
+        _eventList =[NSMutableArray arrayWithArray:[_eventList sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+            NSDate *firstDate = [(CamEvent*)a getTimeOfEvent];
+            NSDate *secondDate = [(CamEvent*)b getTimeOfEvent];
+            return [firstDate compare:secondDate];
+        }]];
+    }
     return _eventList;
 }
+
+
+#pragma mark - CAMEvent Retrieval
 
 /*
     Starts Process of Refreshing the Events List
@@ -65,7 +76,7 @@ static CAMEventServices *sharedInstance;
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
             if ([dictionary objectForKey:@"features"]) {
-                [self handleEvents:[dictionary objectForKey:@"features"]];
+                [self processEvents:[dictionary objectForKey:@"features"]];
             }
         }
         else{
@@ -75,7 +86,25 @@ static CAMEventServices *sharedInstance;
     [data resume];
 }
 
--(void)handleEvents:(NSArray *)events{
+-(void)processEvents:(NSArray *)events{
+    BOOL eventListUpdated = false;
+    for (NSDictionary *eventData in events) {
+        CamEvent *event = [[CamEvent alloc] initWithFeatureObject:eventData];
+        if (![_eventList containsObject:event]) {
+            //Add the new event to the list 
+            [_eventList addObject:event];
+            eventListUnordered=true;
+        }else{
+            //Replace the potentially updated event and place it in
+            //The current location
+            NSUInteger index = [_eventList indexOfObject:event];
+            [_eventList removeObjectAtIndex:index];
+            [_eventList insertObject:event atIndex:index];
+        }
+        eventListUpdated = true;
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"eventListChanged" object:nil];
     
 }
 
