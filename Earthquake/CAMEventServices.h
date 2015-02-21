@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CAMEventServices : NSObject
+@interface CAMEventServices : NSObject{
+    NSDate *lastRefreshDate;
+}
+-(void)refreshEvents;
 
 @property (nonatomic, retain, readonly) CAMEventServices *sharedInstance;
 @property (nonatomic, retain) NSMutableArray *eventList;
