@@ -45,4 +45,18 @@
     return [self.featureDictionary objectForKey:@"latitude"];
 }
 
+-(NSDate *)getTimeOfEvent{
+    
+    if(![self.featureDictionary objectForKey:@"time"]){
+        return nil;
+    }
+   
+    NSNumber *time = [self.featureDictionary objectForKey:@"time"];
+    
+    //Must convert time to seconds
+    long long timeInterval = [time longLongValue] / 1000;
+    
+    return [NSDate dateWithTimeIntervalSince1970:timeInterval];
+}
+
 @end

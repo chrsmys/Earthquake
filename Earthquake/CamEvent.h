@@ -13,6 +13,7 @@
 -(id)initWithFeatureObject:(NSDictionary *)feature;
 -(NSNumber *)getLongitude;
 -(NSNumber *)getLatitude;
+-(NSDate *)getTimeOfEvent; //Returns the date the event occured
 
 @property (nonatomic, retain) NSMutableDictionary *featureDictionary;
 
