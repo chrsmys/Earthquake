@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MasterViewController : UITableViewController<UISplitViewControllerDelegate>
+@interface MasterViewController : UITableViewController<UISplitViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
+@property(nonatomic, retain) NSArray *eventList;
 
 @end
 

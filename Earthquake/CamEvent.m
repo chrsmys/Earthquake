@@ -18,7 +18,7 @@
         }
         
         //Insert Properties into featureDictionary
-        self.featureDictionary = [[NSMutableDictionary alloc] initWithDictionary:feature];
+        self.featureDictionary = [[NSMutableDictionary alloc] initWithDictionary:[feature objectForKey:@"properties"]];
         
         //Add The ID
         [self.featureDictionary  setObject:[feature objectForKey:@"id"] forKey:@"id"];
@@ -67,6 +67,14 @@
 
 -(NSString *)getEventID{
     return [self.featureDictionary objectForKey:@"id"];
+}
+
+-(NSString *)locationName{
+    return [self.featureDictionary objectForKey:@"place"];
+}
+
+-(NSString *)alertLevel{
+    return [self.featureDictionary objectForKey:@"alert"];
 }
 
 #pragma mark - Equal Overeides

@@ -70,13 +70,12 @@ static CAMEventServices *sharedInstance;
  */
 -(void)performQuery:(NSString *)query{
     NSURL *queryURL = [NSURL URLWithString:query];
-    
+    __weak CAMEventServices *weakself = self;
     NSURLSessionDataTask *data = [[NSURLSession sharedSession] dataTaskWithURL:queryURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-
             if ([dictionary objectForKey:@"features"]) {
-                [self processEvents:[dictionary objectForKey:@"features"]];
+                [weakself performSelectorOnMainThread:@selector(processEvents:) withObject:[dictionary objectForKey:@"features"] waitUntilDone:false];
             }
         }
         else{

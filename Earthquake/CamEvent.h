@@ -11,6 +11,10 @@
 @interface CamEvent : NSObject
 
 -(id)initWithFeatureObject:(NSDictionary *)feature;
+
+-(NSString *)locationName;
+-(NSString *)alertLevel;
+-(NSString *)getEventID;
 -(NSNumber *)getLongitude;
 -(NSNumber *)getLatitude;
 -(NSDate *)getTimeOfEvent; //Returns the date the event occured
