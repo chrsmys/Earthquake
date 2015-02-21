@@ -11,9 +11,10 @@
 @interface CAMEventServices : NSObject{
     NSDate *lastRefreshDate;
 }
--(void)refreshEvents;
 
-@property (nonatomic, retain, readonly) CAMEventServices *sharedInstance;
+-(void)refreshEvents;
++(CAMEventServices *)sharedInstance;
+
 @property (nonatomic, retain) NSMutableArray *eventList;
 
 @end

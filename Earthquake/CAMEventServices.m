@@ -13,7 +13,8 @@
     
 }
 @synthesize eventList=_eventList;
-@synthesize sharedInstance=_sharedInstance;
+
+static CAMEventServices *sharedInstance;
 
  NSString *const apiURL = @"http://comcat.cr.usgs.gov/fdsnws/event/1/query";
 
@@ -105,11 +106,11 @@
 
 #pragma mark - Shared Instance
 
--(CAMEventServices *)sharedInstance{
-    if(!_sharedInstance){
-        _sharedInstance=[[CAMEventServices alloc] init];
++(CAMEventServices *)sharedInstance{
+    if(!sharedInstance){
+        sharedInstance=[[CAMEventServices alloc] init];
     }
-    return _sharedInstance;
+    return sharedInstance;
 }
 
 @end
