@@ -13,12 +13,15 @@
     self = [super init];
     if (self){
         //Validate Object
-        if (![feature objectForKey:@"type"] || ![[feature objectForKey:@"type"] isEqualToString:@"Feature"] || ![feature objectForKey:@"properties"]) {
+        if (![feature objectForKey:@"type"] || ![[feature objectForKey:@"type"] isEqualToString:@"Feature"] || ![feature objectForKey:@"properties"] || ! [feature objectForKey:@"id"]) {
             return nil;
         }
         
         //Insert Properties into featureDictionary
         self.featureDictionary = [[NSMutableDictionary alloc] initWithDictionary:feature];
+        
+        //Add The ID
+        [self.featureDictionary  setObject:[feature objectForKey:@"id"] forKey:@"id"];
         
         //Extract the Latitude and Longitude and insert it into the feature dictionary
         NSDictionary *geometryDictionary = [feature objectForKey:@"geometry"];
@@ -28,11 +31,14 @@
                 NSNumber *longitude = [coordinatesArray objectAtIndex:0];
                 NSNumber *latitude = [coordinatesArray objectAtIndex:1];
                 NSNumber *depth = [coordinatesArray objectAtIndex:2];
-                [self.featureDictionary setValue:latitude forKey:@"latitude"];
-                [self.featureDictionary setValue:longitude forKey:@"longitude"];
-                [self.featureDictionary setValue:depth forKey:@"depth"];
+                [self.featureDictionary setObject:latitude forKey:@"latitude"];
+                [self.featureDictionary setObject:longitude forKey:@"longitude"];
+                [self.featureDictionary setObject:depth forKey:@"depth"];
             }
         }
+        
+        
+        
     }
     return self;
 }
@@ -57,6 +63,25 @@
     long long timeInterval = [time longLongValue] / 1000;
     
     return [NSDate dateWithTimeIntervalSince1970:timeInterval];
+}
+
+-(NSString *)getEventID{
+    return [self.featureDictionary objectForKey:@"id"];
+}
+
+#pragma mark - Equal Overeides
+
+-(BOOL)isEqual:(id)object{
+    if (![object isKindOfClass:[self class]]) {
+        return false;
+    }
+    CamEvent *other =(CamEvent *)object;
+    
+    return [[other getEventID] isEqualToString:[self getEventID]];
+}
+
+-(NSUInteger)hash{
+    return [[self getEventID] hash];
 }
 
 @end
