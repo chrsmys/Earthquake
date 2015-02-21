@@ -63,12 +63,20 @@ static CAMEventServices *sharedInstance;
     NSURLSessionDataTask *data = [[NSURLSession sharedSession] dataTaskWithURL:queryURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+
+            if ([dictionary objectForKey:@"features"]) {
+                [self handleEvents:[dictionary objectForKey:@"features"]];
+            }
         }
         else{
             
         }
     }];
     [data resume];
+}
+
+-(void)handleEvents:(NSArray *)events{
+    
 }
 
 #pragma mark - Helper Methods

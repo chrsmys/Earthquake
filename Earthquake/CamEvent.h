@@ -11,7 +11,13 @@
 @interface CamEvent : NSObject
 
 -(id)initWithFeatureObject:(NSDictionary *)feature;
+-(NSNumber *)getLongitude;
+-(NSNumber *)getLatitude;
 
+@property (nonatomic, retain) NSMutableDictionary *featureDictionary;
+
+
+/*
 @property (nonatomic, retain) NSString *magnitudeType; //Measurement that magnitude is in
 @property (nonatomic) double magnitude;
 
@@ -35,5 +41,6 @@
 @property (nonatomic, retain) NSURL *url;
 
 @property (nonatomic) int timezone;
+ */
 
 @end
