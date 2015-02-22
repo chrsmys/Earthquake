@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.eventMapView.delegate=self;
     [self changeAnnotationsWithEvents:_eventList];
     // Do any additional setup after loading the view.
 }
@@ -51,7 +52,14 @@
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@""];
+    pin.canShowCallout = YES;
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    pin.rightCalloutAccessoryView = button;
     return pin;
+}
+
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+    [self performSegueWithIdentifier:@"ShowAnnotationDetail" sender:nil];
 }
 
 -(void)zoomMapToAnnotation:(id<MKAnnotation>)annotation{
