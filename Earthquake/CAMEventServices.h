@@ -14,6 +14,7 @@
 }
 
 -(void)refreshEvents;
+-(NSString *)formatEventDate:(NSDate *)date;
 +(CAMEventServices *)sharedInstance;
 
 @property (nonatomic, retain) NSMutableArray *eventList;

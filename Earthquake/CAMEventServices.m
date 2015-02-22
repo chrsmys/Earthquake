@@ -140,6 +140,13 @@ static CAMEventServices *sharedInstance;
     return [isoFormatter stringFromDate:date];
 }
 
+-(NSString *)formatEventDate:(NSDate *)date{
+    NSDateFormatter *formatter =[[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    return [formatter stringFromDate:date];
+}
 #pragma mark - Shared Instance
 
 +(CAMEventServices *)sharedInstance{
