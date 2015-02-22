@@ -7,7 +7,7 @@
 //
 
 #import "CamEvent.h"
-
+#import "NSDictionary+Constructors.h"
 @implementation CamEvent
 -(id)initWithFeatureObject:(NSDictionary *)feature{
     self = [super init];
@@ -37,7 +37,8 @@
             }
         }
         
-        
+        //Remove all instances of NSNull from out list
+        self.featureDictionary = [[NSMutableDictionary alloc] initWithDictionary:[self.featureDictionary dictionaryByReplacingNSNullWithString]];
         
     }
     return self;
@@ -66,15 +67,15 @@
 }
 
 -(NSString *)getEventID{
-    return [self.featureDictionary objectForKey:@"id"];
+    return [self.featureDictionary objectForKey:@"id"] ?: @"Undefined";
 }
 
 -(NSString *)locationName{
-    return [self.featureDictionary objectForKey:@"place"];
+    return [self.featureDictionary objectForKey:@"place"] ?: @"Undefined";
 }
 
 -(NSString *)alertLevel{
-    return [self.featureDictionary objectForKey:@"alert"];
+    return [self.featureDictionary objectForKey:@"alert"] ?: @"Undefined";
 }
 
 #pragma mark - Equal Overeides

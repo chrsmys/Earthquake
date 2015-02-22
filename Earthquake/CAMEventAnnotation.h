@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+@class CamEvent;
 
 @interface CAMEventAnnotation : NSObject<MKAnnotation>
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+
 - (id)initWithLocation:(CLLocationCoordinate2D)coord;
+- (id)initWithCamEvent:(CamEvent *)event;
+
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly, copy) NSString *subtitle;
 @end

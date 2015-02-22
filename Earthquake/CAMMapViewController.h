@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-@interface CAMMapViewController : UIViewController
+@interface CAMMapViewController : UIViewController <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *eventMapView;
 @property (nonatomic, strong) NSArray *eventList;
 @end

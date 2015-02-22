@@ -7,7 +7,8 @@
 //
 
 #import "CAMMapViewController.h"
-
+#import "CamEvent.h"
+#import "CAMEventAnnotation.h"
 @interface CAMMapViewController ()
 
 @end
@@ -17,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self changeAnnotationsWithEvents:_eventList];
     // Do any additional setup after loading the view.
 }
 
@@ -27,11 +29,23 @@
 
 -(void)setEventList:(NSArray *)eventList{
     _eventList=eventList;
-    [self updateMapAnnotations];
+    [self changeAnnotationsWithEvents:_eventList];
 }
 
--(void)updateMapAnnotations{
+-(void)changeAnnotationsWithEvents:(NSArray *)eventList{
+    [self.eventMapView removeAnnotations:[self.eventMapView annotations]];
     
+    for (CamEvent *event in eventList) {
+        CAMEventAnnotation *anotation = [[CAMEventAnnotation alloc] initWithCamEvent:event];
+        [self.eventMapView addAnnotation:anotation];
+    }
+}
+
+#pragma MapView Delegate
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@""];
+    return pin;
 }
 
 /*

@@ -9,7 +9,7 @@
 #import "MasterViewController.h"
 #import "CAMEventServices.h"
 #import "CamEvent.h"
-
+#import "CAMMapViewController.h"
 @interface MasterViewController ()
 
 //determines whether Master is displayed in compact enviornment
@@ -87,6 +87,20 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 -(BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController{
     return self.collapseSecondaryViewOnPrimary;
+}
+
+#pragma mark - NAVIGATION
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"MoveToMapDetailView"]) {
+        id tempDestination = segue.destinationViewController;
+        if([segue.destinationViewController isKindOfClass:[UINavigationController class]]){
+            tempDestination = [(UINavigationController *)tempDestination topViewController];
+        }
+        
+        CAMMapViewController *destination = tempDestination;
+        CamEvent *selectedEvent = [_eventList objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        [destination setEventList:@[selectedEvent]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

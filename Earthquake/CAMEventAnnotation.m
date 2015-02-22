@@ -17,20 +17,20 @@
     return self;
 }
 
--(id)initWithCamEvent:(CamEvent *)event{
+- (id)initWithCamEvent:(CamEvent *)event{
     
     self =[super init];
     if (self) {
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake((CLLocationDegrees)[[event getLatitude] doubleValue], (CLLocationDegrees)[[event getLongitude] doubleValue]);
-        _title=[event locationName];
-        _subtitle = [event alertLevel];
+        _title=[event locationName]?: @"";
+        _subtitle =[event alertLevel];
         [self commonInit:coord];
     }
     return self;
 
 }
 
--(void)commonInit:(CLLocationCoordinate2D)coord{
+- (void)commonInit:(CLLocationCoordinate2D)coord{
     _coordinate=coord;
 }
 

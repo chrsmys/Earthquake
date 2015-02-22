@@ -142,7 +142,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="rSd-ja-7xD" kind="showDetail" id="yYU-aK-Vc2"/>
+                                    <segue destination="rSd-ja-7xD" kind="showDetail" identifier="MoveToMapDetailView" id="yYU-aK-Vc2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
