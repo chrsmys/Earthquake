@@ -22,7 +22,6 @@
 		912332411A97D7B200D78FCF /* CAMEventServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 912332401A97D7B200D78FCF /* CAMEventServices.m */; };
 		912332451A97E1F400D78FCF /* CamEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 912332441A97E1F400D78FCF /* CamEvent.m */; };
 		912332501A982AAC00D78FCF /* NSDateFormatter+Constructors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9123324F1A982AAC00D78FCF /* NSDateFormatter+Constructors.m */; };
-		912332531A98FC3300D78FCF /* CAMEventAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 912332521A98FC3300D78FCF /* CAMEventAnnotation.m */; };
 		9191AD0F1A99517E0024BBCD /* NSDictionary+Constructors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9191AD0E1A99517E0024BBCD /* NSDictionary+Constructors.m */; };
 		9191AD191A9A7AAA0024BBCD /* CAMSeismograph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191AD181A9A7AAA0024BBCD /* CAMSeismograph.swift */; };
 /* End PBXBuildFile section */
@@ -67,8 +66,6 @@
 		912332441A97E1F400D78FCF /* CamEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CamEvent.m; sourceTree = "<group>"; };
 		9123324E1A982AAC00D78FCF /* NSDateFormatter+Constructors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+Constructors.h"; sourceTree = "<group>"; };
 		9123324F1A982AAC00D78FCF /* NSDateFormatter+Constructors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+Constructors.m"; sourceTree = "<group>"; };
-		912332511A98FC3300D78FCF /* CAMEventAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMEventAnnotation.h; sourceTree = "<group>"; };
-		912332521A98FC3300D78FCF /* CAMEventAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAMEventAnnotation.m; sourceTree = "<group>"; };
 		9191AD0D1A99517E0024BBCD /* NSDictionary+Constructors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Constructors.h"; sourceTree = "<group>"; };
 		9191AD0E1A99517E0024BBCD /* NSDictionary+Constructors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Constructors.m"; sourceTree = "<group>"; };
 		9191AD171A9A7AAA0024BBCD /* Earthquake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Earthquake-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -198,8 +195,6 @@
 			children = (
 				912332431A97E1F400D78FCF /* CamEvent.h */,
 				912332441A97E1F400D78FCF /* CamEvent.m */,
-				912332511A98FC3300D78FCF /* CAMEventAnnotation.h */,
-				912332521A98FC3300D78FCF /* CAMEventAnnotation.m */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -327,7 +322,6 @@
 				9123320A1A97C69500D78FCF /* main.m in Sources */,
 				9191AD191A9A7AAA0024BBCD /* CAMSeismograph.swift in Sources */,
 				9191AD0F1A99517E0024BBCD /* NSDictionary+Constructors.m in Sources */,
-				912332531A98FC3300D78FCF /* CAMEventAnnotation.m in Sources */,
 				9123322F1A97C78800D78FCF /* CAMMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

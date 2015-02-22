@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface CamEvent : NSObject
+#import <MapKit/MapKit.h>
+@interface CamEvent : NSObject <MKAnnotation>
 
 -(id)initWithFeatureObject:(NSDictionary *)feature;
 
@@ -20,6 +20,13 @@
 -(NSDate *)getTimeOfEvent; //Returns the date the event occured
 
 @property (nonatomic, retain) NSMutableDictionary *featureDictionary;
+
+//MKAnnotation
+- (id)initWithLocation:(CLLocationCoordinate2D)coord;
+
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, readonly, copy) NSString *title;
+@property (nonatomic, readonly, copy) NSString *subtitle;
 
 
 /*

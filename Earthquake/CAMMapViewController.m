@@ -37,9 +37,9 @@
     [self.eventMapView removeAnnotations:[self.eventMapView annotations]];
     
     for (CamEvent *event in eventList) {
-        CAMEventAnnotation *anotation = [[CAMEventAnnotation alloc] initWithCamEvent:event];
-        [self.eventMapView addAnnotation:anotation];
-        [self zoomMapToAnnotation:anotation];
+      //  CAMEventAnnotation *anotation = [[CAMEventAnnotation alloc] initWithCamEvent:event];
+        [self.eventMapView addAnnotation:event];
+        [self zoomMapToAnnotation:event];
     }
     
     //If there are multiple annotations let mapview handle fitting all in map

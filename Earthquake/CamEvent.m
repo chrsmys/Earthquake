@@ -8,6 +8,7 @@
 
 #import "CamEvent.h"
 #import "NSDictionary+Constructors.h"
+#import "CAMEventServices.h"
 @implementation CamEvent
 -(id)initWithFeatureObject:(NSDictionary *)feature{
     self = [super init];
@@ -93,4 +94,18 @@
     return [[self getEventID] hash];
 }
 
+-(NSString *)title{
+    return [self locationName];
+}
+
+-(NSString *)subtitle{
+    NSDate *eventDate = [self getTimeOfEvent];
+    NSString *dateString = [[CAMEventServices sharedInstance] formatEventDate:eventDate];
+
+    return dateString;
+}
+
+-(CLLocationCoordinate2D)coordinate{
+    return  CLLocationCoordinate2DMake((CLLocationDegrees)[[self getLatitude] doubleValue], (CLLocationDegrees)[[self getLongitude] doubleValue]);
+}
 @end
