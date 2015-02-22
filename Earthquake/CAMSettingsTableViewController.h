@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CAMSettingsTableViewController : UITableViewController
+- (IBAction)doneButtonPressed:(id)sender;
 
 @end

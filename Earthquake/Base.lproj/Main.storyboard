@@ -104,7 +104,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="XfX-LS-n7s">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="eGD-V4-9io"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="eGD-V4-9io">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="ElC-CT-bbA" id="NIm-FP-az6"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lkq-iu-jjk" userLabel="First Responder" sceneMemberID="firstResponder"/>
