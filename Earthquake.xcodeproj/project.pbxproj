@@ -24,6 +24,7 @@
 		912332501A982AAC00D78FCF /* NSDateFormatter+Constructors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9123324F1A982AAC00D78FCF /* NSDateFormatter+Constructors.m */; };
 		912332531A98FC3300D78FCF /* CAMEventAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 912332521A98FC3300D78FCF /* CAMEventAnnotation.m */; };
 		9191AD0F1A99517E0024BBCD /* NSDictionary+Constructors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9191AD0E1A99517E0024BBCD /* NSDictionary+Constructors.m */; };
+		9191AD191A9A7AAA0024BBCD /* CAMSeismograph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191AD181A9A7AAA0024BBCD /* CAMSeismograph.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		912332521A98FC3300D78FCF /* CAMEventAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAMEventAnnotation.m; sourceTree = "<group>"; };
 		9191AD0D1A99517E0024BBCD /* NSDictionary+Constructors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Constructors.h"; sourceTree = "<group>"; };
 		9191AD0E1A99517E0024BBCD /* NSDictionary+Constructors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Constructors.m"; sourceTree = "<group>"; };
+		9191AD171A9A7AAA0024BBCD /* Earthquake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Earthquake-Bridging-Header.h"; sourceTree = "<group>"; };
+		9191AD181A9A7AAA0024BBCD /* CAMSeismograph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAMSeismograph.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,7 @@
 			children = (
 				9123320B1A97C69500D78FCF /* AppDelegate.h */,
 				9123320C1A97C69500D78FCF /* AppDelegate.m */,
+				9191AD181A9A7AAA0024BBCD /* CAMSeismograph.swift */,
 				912332471A982A1000D78FCF /* Categories */,
 				912332421A97E1C800D78FCF /* Events */,
 				9123323B1A97D72D00D78FCF /* Services */,
@@ -124,6 +128,7 @@
 				912332141A97C69500D78FCF /* Images.xcassets */,
 				912332161A97C69600D78FCF /* LaunchScreen.xib */,
 				912332071A97C69500D78FCF /* Supporting Files */,
+				9191AD171A9A7AAA0024BBCD /* Earthquake-Bridging-Header.h */,
 			);
 			path = Earthquake;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 				9123320D1A97C69500D78FCF /* AppDelegate.m in Sources */,
 				912332451A97E1F400D78FCF /* CamEvent.m in Sources */,
 				9123320A1A97C69500D78FCF /* main.m in Sources */,
+				9191AD191A9A7AAA0024BBCD /* CAMSeismograph.swift in Sources */,
 				9191AD0F1A99517E0024BBCD /* NSDictionary+Constructors.m in Sources */,
 				912332531A98FC3300D78FCF /* CAMEventAnnotation.m in Sources */,
 				9123322F1A97C78800D78FCF /* CAMMapViewController.m in Sources */,
@@ -446,12 +452,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Earthquake/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Earthquake/Earthquake-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -459,12 +468,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Earthquake/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Earthquake/Earthquake-Bridging-Header.h";
 			};
 			name = Release;
 		};

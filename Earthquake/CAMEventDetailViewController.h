@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CamEvent.h"
+@class CAMSeismograph;
 
 @interface CAMEventDetailViewController : UITableViewController
+@property (weak, nonatomic) IBOutlet CAMSeismograph *seismometer;
 - (IBAction)doneButtonPressed:(id)sender;
 
 @end
