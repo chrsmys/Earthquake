@@ -38,6 +38,12 @@
     for (CamEvent *event in eventList) {
         CAMEventAnnotation *anotation = [[CAMEventAnnotation alloc] initWithCamEvent:event];
         [self.eventMapView addAnnotation:anotation];
+        [self zoomMapToAnnotation:anotation];
+    }
+    
+    //If there are multiple annotations let mapview handle fitting all in map
+    if ([[self.eventMapView annotations] count]>1) {
+        [self.eventMapView showAnnotations:[self.eventMapView annotations] animated:true];
     }
 }
 
@@ -46,6 +52,11 @@
 {
     MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@""];
     return pin;
+}
+
+-(void)zoomMapToAnnotation:(id<MKAnnotation>)annotation{
+    MKCoordinateRegion mapRegion = MKCoordinateRegionMake([annotation coordinate], MKCoordinateSpanMake(4.0, 4.0));
+    [self.eventMapView setRegion:mapRegion animated:true];
 }
 
 /*
