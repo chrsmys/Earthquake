@@ -7,6 +7,7 @@
 //
 
 #import "CAMEventDetailViewController.h"
+#import "CAMEventServices.h"
 #import "Earthquake-Swift.h"
 @interface CAMEventDetailViewController ()
 
@@ -17,14 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     keyDisplayOrder = @[@"type", @"mag", @"magType", @"sig", @"status"];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.eventName.text=[_currentEvent locationName];
+    //Display the Locationa and Date
+    self.eventName.text=[NSString stringWithFormat:@"%@ \n %@",[_currentEvent locationName],[[CAMEventServices sharedInstance] formatEventDate:[_currentEvent getTimeOfEvent]]];
 }
 -(void)viewDidAppear:(BOOL)animated{
     self.seismometer.magnitude=[_currentEvent getMagnitude];
