@@ -10,6 +10,7 @@
 #import "CAMEventServices.h"
 #import "CamEvent.h"
 #import "CAMMapViewController.h"
+#import "UIScrollView+UzysAnimatedGifPullToRefresh.h"
 @interface MasterViewController ()
 
 //determines whether Master is displayed in compact enviornment
@@ -32,6 +33,16 @@
     [self subscribeToNotifications];
     [[CAMEventServices sharedInstance] refreshEvents];
     
+    __weak CAMEventServices *eventService =[CAMEventServices sharedInstance];
+    
+    [self.tableView addPullToRefreshActionHandler:^{
+        [eventService refreshEvents];
+    }
+                            ProgressImagesGifName:@"ajax-loader.gif"
+                             LoadingImagesGifName:@"ajax-loader.gif"
+                          ProgressScrollThreshold:60
+                            LoadingImageFrameRate:30];
+    
     [super viewDidLoad];
 }
 
@@ -43,6 +54,7 @@
 }
 
 -(void)handleEventListChange{
+    [self.tableView stopPullToRefreshAnimation];
     self.eventList = [[NSArray alloc] initWithArray:[[CAMEventServices sharedInstance] eventList] copyItems:NO];
     [self.tableView reloadData];
 }
