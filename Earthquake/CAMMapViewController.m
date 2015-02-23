@@ -29,6 +29,8 @@
     [self subscribeToEvents];
     
     self.eventMapView.delegate=self;
+    
+    [self.eventMapView setNeedsDisplay];
     [self changeAnnotationsWithEvents:_eventList];
     
     //Get the current maptype from the settings service
@@ -135,21 +137,9 @@
             
             // Animate squash
         }completion:^(BOOL finished){
-            if (finished) {
-                [UIView animateWithDuration:0.05 animations:^{
-                    aV.transform = CGAffineTransformMakeScale(1.0, 1.0);
-                    
-                }completion:^(BOOL finished){
-                    if (finished) {
-                        [UIView animateWithDuration:0.1 animations:^{
-                            aV.transform = CGAffineTransformIdentity;
-                            aV.image=[UIImage imageNamed:@"annotationCrack.png"];
-                            if(aV && aV.annotation){
-                                [mapView selectAnnotation:aV.annotation animated:true];
-                            }
-                        }];
-                    }
-                }];
+            if (finished && aV) {
+                aV.image=[UIImage imageNamed:@"annotationCrack.png"];
+
             }
         }];
     }

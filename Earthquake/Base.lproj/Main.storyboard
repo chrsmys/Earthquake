@@ -36,7 +36,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Event Map" id="jkr-Jj-aBn">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="OLs-JK-wGq">
+                        <barButtonItem key="rightBarButtonItem" id="OLs-JK-wGq">
                             <connections>
                                 <segue destination="rBs-p8-UEg" kind="popoverPresentation" popoverAnchorBarButtonItem="OLs-JK-wGq" id="fEm-to-YYv">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -365,7 +365,7 @@ try changing your filter settings</string>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="rBs-p8-UEg" kind="presentation" id="reo-EE-3ll"/>
+                                    <segue destination="rBs-p8-UEg" kind="presentation" identifier="displaySettings" modalPresentationStyle="pageSheet" id="reo-EE-3ll"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" id="tKf-2Y-fho">
@@ -431,9 +431,6 @@ try changing your filter settings</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Earthquake Events" id="dUh-rV-eay"/>
-                    <connections>
-                        <segue destination="ElC-CT-bbA" kind="presentation" modalPresentationStyle="pageSheet" id="1Fm-uo-DTv"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rlx-5B-0LZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -581,8 +578,7 @@ try changing your filter settings</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1Fm-uo-DTv"/>
-        <segue reference="yYU-aK-Vc2"/>
         <segue reference="reo-EE-3ll"/>
+        <segue reference="yYU-aK-Vc2"/>
     </inferredMetricsTieBreakers>
 </document>

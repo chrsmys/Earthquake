@@ -42,6 +42,7 @@
 		918502811A9BBE5B00EC9A6D /* EmptyMasterViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918502801A9BBE5B00EC9A6D /* EmptyMasterViewControllerDataSource.swift */; };
 		9191AD0F1A99517E0024BBCD /* NSDictionary+Constructors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9191AD0E1A99517E0024BBCD /* NSDictionary+Constructors.m */; };
 		9191AD191A9A7AAA0024BBCD /* CAMSeismograph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191AD181A9A7AAA0024BBCD /* CAMSeismograph.swift */; };
+		91B94C221A9BCF490058F739 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 91B94C211A9BCF490058F739 /* Podfile */; };
 		91D77F8C1A9ABD4A00765FB9 /* annotationCrack.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D77F8B1A9ABD4A00765FB9 /* annotationCrack.png */; };
 		91D77F901A9AC1A400765FB9 /* annotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D77F8F1A9AC1A400765FB9 /* annotation.png */; };
 /* End PBXBuildFile section */
@@ -109,6 +110,7 @@
 		9191AD0E1A99517E0024BBCD /* NSDictionary+Constructors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Constructors.m"; sourceTree = "<group>"; };
 		9191AD171A9A7AAA0024BBCD /* Earthquake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Earthquake-Bridging-Header.h"; sourceTree = "<group>"; };
 		9191AD181A9A7AAA0024BBCD /* CAMSeismograph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAMSeismograph.swift; sourceTree = "<group>"; };
+		91B94C211A9BCF490058F739 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		91D77F8B1A9ABD4A00765FB9 /* annotationCrack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = annotationCrack.png; sourceTree = "<group>"; };
 		91D77F8F1A9AC1A400765FB9 /* annotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = annotation.png; sourceTree = "<group>"; };
 		FF5A182E90A3946B1353DB99 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				912332081A97C69500D78FCF /* Info.plist */,
 				912332091A97C69500D78FCF /* main.m */,
 				9129607E1A9B7EE600B584C0 /* ajax-loader.gif */,
+				91B94C211A9BCF490058F739 /* Podfile */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				918502721A9BB65A00EC9A6D /* Icon-72.png in Resources */,
 				918502781A9BB65A00EC9A6D /* Icon-Spotlight-40.png in Resources */,
 				910FDA381A9B4F3B00ECC219 /* fontawesome-webfont.ttf in Resources */,
+				91B94C221A9BCF490058F739 /* Podfile in Resources */,
 				9185027A1A9BB65A00EC9A6D /* Icon.png in Resources */,
 				9185026F1A9BB65A00EC9A6D /* Icon-60.png in Resources */,
 				918502711A9BB65A00EC9A6D /* icon-60@3x.png in Resources */,
