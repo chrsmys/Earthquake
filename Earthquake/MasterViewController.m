@@ -11,6 +11,7 @@
 #import "CamEvent.h"
 #import "CAMMapViewController.h"
 #import "UIScrollView+UzysAnimatedGifPullToRefresh.h"
+#import "Earthquake-Swift.h"
 @interface MasterViewController ()
 
 //determines whether Master is displayed in compact enviornment
@@ -43,6 +44,8 @@
                           ProgressScrollThreshold:60
                             LoadingImageFrameRate:30];
     
+    emptyDataSource = [[EmptyMasterViewControllerDataSource alloc] init];
+    
     [super viewDidLoad];
 }
 
@@ -72,6 +75,17 @@
 -(void)handleEventListChange{
     [self.tableView performSelector:@selector(stopPullToRefreshAnimation) withObject:nil afterDelay:1.0];
     self.eventList = [[NSArray alloc] initWithArray:[[CAMEventServices sharedInstance] eventList] copyItems:NO];
+   
+    if ([self.eventList count]>0) {
+        //Replace delegate with self
+        self.tableView.dataSource=self;
+        self.tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
+    }else{
+        //Replace delegate with one that will display empty results
+        self.tableView.dataSource=emptyDataSource;
+        self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    }
+    
     [self.tableView reloadData];
 }
 
@@ -97,11 +111,17 @@
 
 - (CGFloat)tableView:(UITableView *)tableView
 estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([tableView.dataSource isEqual:emptyDataSource]) {
+        return 400;
+    }
     return 64;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([tableView.dataSource isEqual:emptyDataSource]) {
+        return 400;
+    }
     return 64;
 }
 

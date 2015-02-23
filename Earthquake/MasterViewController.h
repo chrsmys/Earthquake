@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class EmptyMasterViewControllerDataSource;
 
-@interface MasterViewController : UITableViewController<UISplitViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface MasterViewController : UITableViewController<UISplitViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>{
+    EmptyMasterViewControllerDataSource *emptyDataSource; //Handles the empty data set
+}
 
 @property(nonatomic, retain) NSArray *eventList; //List of events to display in the tableview
 

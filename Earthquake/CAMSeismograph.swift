@@ -7,8 +7,6 @@
 //
 
 
-//TODO: Come back and document
-
 import UIKit
 @objc @IBDesignable class CAMSeismograph: UIView {
     

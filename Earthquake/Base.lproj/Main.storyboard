@@ -4,6 +4,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="fontawesome-webfont.ttf">
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Event Map-->
         <scene sceneID="gwR-XY-few">
@@ -315,6 +321,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="emptyCell" rowHeight="408" id="FjF-JG-hDc">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FjF-JG-hDc" id="QyS-Oy-JhW">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1I3-1Y-iii">
+                                            <rect key="frame" x="19" y="8" width="562" height="86"/>
+                                            <string key="text">Looks like there is no data to show
+try changing your filter settings</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8XF-CB-8Ul">
+                                            <rect key="frame" x="150" y="129" width="300" height="103"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="300" id="Xdk-66-kyK"/>
+                                                <constraint firstAttribute="height" constant="103" id="wo2-xa-0hS"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="68"/>
+                                            <state key="normal" title="">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kg9-7C-imG">
+                                            <rect key="frame" x="19" y="267" width="562" height="85"/>
+                                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="85"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="1I3-1Y-iii" secondAttribute="trailing" constant="11" id="43n-bH-KaI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="kg9-7C-imG" secondAttribute="trailing" constant="11" id="5R6-QT-hNR"/>
+                                        <constraint firstAttribute="centerX" secondItem="8XF-CB-8Ul" secondAttribute="centerX" id="KS9-Td-fe2"/>
+                                        <constraint firstItem="8XF-CB-8Ul" firstAttribute="top" secondItem="1I3-1Y-iii" secondAttribute="bottom" constant="35" id="YRv-RI-G3m"/>
+                                        <constraint firstItem="1I3-1Y-iii" firstAttribute="leading" secondItem="QyS-Oy-JhW" secondAttribute="leadingMargin" constant="11" id="d4W-vZ-N40"/>
+                                        <constraint firstItem="1I3-1Y-iii" firstAttribute="top" secondItem="QyS-Oy-JhW" secondAttribute="topMargin" id="gad-rE-pRx"/>
+                                        <constraint firstItem="kg9-7C-imG" firstAttribute="leading" secondItem="QyS-Oy-JhW" secondAttribute="leadingMargin" constant="11" id="j5g-KC-CQA"/>
+                                        <constraint firstItem="kg9-7C-imG" firstAttribute="top" secondItem="8XF-CB-8Ul" secondAttribute="bottom" constant="35" id="piV-WP-hXi"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="rBs-p8-UEg" kind="presentation" id="reo-EE-3ll"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" id="tKf-2Y-fho">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tKf-2Y-fho" id="PuB-UK-G8d">
@@ -378,10 +431,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Earthquake Events" id="dUh-rV-eay"/>
+                    <connections>
+                        <segue destination="ElC-CT-bbA" kind="presentation" modalPresentationStyle="pageSheet" id="1Fm-uo-DTv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rlx-5B-0LZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="385" y="-894"/>
+            <point key="canvasLocation" x="477" y="-894"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="jJD-5O-imP">
@@ -525,6 +581,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="1Fm-uo-DTv"/>
         <segue reference="yYU-aK-Vc2"/>
+        <segue reference="reo-EE-3ll"/>
     </inferredMetricsTieBreakers>
 </document>

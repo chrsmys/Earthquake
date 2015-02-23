@@ -39,6 +39,7 @@
 		918502791A9BB65A00EC9A6D /* Icon-Spotlight-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9185026C1A9BB65A00EC9A6D /* Icon-Spotlight-40@2x.png */; };
 		9185027A1A9BB65A00EC9A6D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9185026D1A9BB65A00EC9A6D /* Icon.png */; };
 		9185027B1A9BB65A00EC9A6D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9185026E1A9BB65A00EC9A6D /* Icon@2x.png */; };
+		918502811A9BBE5B00EC9A6D /* EmptyMasterViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918502801A9BBE5B00EC9A6D /* EmptyMasterViewControllerDataSource.swift */; };
 		9191AD0F1A99517E0024BBCD /* NSDictionary+Constructors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9191AD0E1A99517E0024BBCD /* NSDictionary+Constructors.m */; };
 		9191AD191A9A7AAA0024BBCD /* CAMSeismograph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191AD181A9A7AAA0024BBCD /* CAMSeismograph.swift */; };
 		91D357F51A9B7C06003997CD /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 91D357F41A9B7C06003997CD /* Podfile */; };
@@ -104,6 +105,7 @@
 		9185026C1A9BB65A00EC9A6D /* Icon-Spotlight-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Spotlight-40@2x.png"; sourceTree = "<group>"; };
 		9185026D1A9BB65A00EC9A6D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		9185026E1A9BB65A00EC9A6D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		918502801A9BBE5B00EC9A6D /* EmptyMasterViewControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyMasterViewControllerDataSource.swift; sourceTree = "<group>"; };
 		9191AD0D1A99517E0024BBCD /* NSDictionary+Constructors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Constructors.h"; sourceTree = "<group>"; };
 		9191AD0E1A99517E0024BBCD /* NSDictionary+Constructors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Constructors.m"; sourceTree = "<group>"; };
 		9191AD171A9A7AAA0024BBCD /* Earthquake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Earthquake-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			children = (
 				9123320E1A97C69500D78FCF /* MasterViewController.h */,
 				9123320F1A97C69500D78FCF /* MasterViewController.m */,
+				918502801A9BBE5B00EC9A6D /* EmptyMasterViewControllerDataSource.swift */,
 			);
 			name = Master;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				9123323A1A97D3BE00D78FCF /* CAMEventDetailViewController.m in Sources */,
 				912332101A97C69500D78FCF /* MasterViewController.m in Sources */,
 				912332501A982AAC00D78FCF /* NSDateFormatter+Constructors.m in Sources */,
+				918502811A9BBE5B00EC9A6D /* EmptyMasterViewControllerDataSource.swift in Sources */,
 				9123323E1A97D77000D78FCF /* CAMSettingsServices.m in Sources */,
 				912332371A97D35F00D78FCF /* CAMSettingsTableViewController.m in Sources */,
 				912332411A97D7B200D78FCF /* CAMEventServices.m in Sources */,
