@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 @interface CAMSettingsServices : NSObject
-@property (nonatomic) MKMapType mapType;
-@property (nonatomic) int currentMagnitudeFilter;
-+(CAMSettingsServices *)sharedInstance;
+@property (nonatomic) MKMapType mapType; //The current type of the map saved in settings
+@property (nonatomic) int currentMagnitudeFilter; //All magnitudes should be greater than this number
++ (CAMSettingsServices *)sharedInstance;
 @end

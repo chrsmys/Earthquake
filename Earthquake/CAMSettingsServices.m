@@ -12,12 +12,16 @@
 @synthesize mapType=_mapType;
 static CAMSettingsServices *sharedInstance;
 
--(void)setMapType:(MKMapType)mapType{
+/**
+    Sets and saves the current maptype
+ */
+- (void)setMapType:(MKMapType)mapType{
     [[self standardDefaults] setObject:[NSNumber numberWithInt:mapType] forKey:@"MapType"];
     [[self standardDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"MapTypeChanged" object:nil];
 }
--(MKMapType)mapType{
+
+- (MKMapType)mapType{
     if([[self standardDefaults] objectForKey:@"MapType"]){
         return [[[self standardDefaults] objectForKey:@"MapType"] intValue];
     }else{
@@ -26,14 +30,18 @@ static CAMSettingsServices *sharedInstance;
 }
 
 
--(int)currentMagnitudeFilter{
+- (int)currentMagnitudeFilter{
     if([[self standardDefaults] objectForKey:@"MagnitudeFilter"]){
         return [[[self standardDefaults] objectForKey:@"MagnitudeFilter"] intValue];
     }else{
         return 0;
     }
 }
--(void)setCurrentMagnitudeFilter:(int)currentMagnitudeFilter{
+
+/**
+    Sets and saves the current magnitude filter
+ */
+- (void)setCurrentMagnitudeFilter:(int)currentMagnitudeFilter{
     //keep it within bounds
     int magnitude = MIN(9, MAX(currentMagnitudeFilter, 0));
     
@@ -43,12 +51,14 @@ static CAMSettingsServices *sharedInstance;
 }
 
 #pragma mark - helper methods
--(NSUserDefaults *)standardDefaults{
+
+- (NSUserDefaults *)standardDefaults{
     return [NSUserDefaults standardUserDefaults];
 }
+
 #pragma mark - Shared Instance
 
-+(CAMSettingsServices *)sharedInstance{
++ (CAMSettingsServices *)sharedInstance{
     if(!sharedInstance){
         sharedInstance=[[CAMSettingsServices alloc] init];
     }
