@@ -21,6 +21,8 @@
     [super viewDidLoad];
     self.eventMapView.delegate=self;
     [self changeAnnotationsWithEvents:_eventList];
+    [_settingsButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"FontAwesome" size:26.0], UITextAttributeFont,nil] forState:UIControlStateNormal];
+    _settingsButton.title=@"\uf013";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mapTypeChanged) name:@"MapTypeChanged" object:nil];
     [self.eventMapView setMapType:[[CAMSettingsServices sharedInstance] mapType]];
     // Do any additional setup after loading the view.
@@ -60,7 +62,6 @@
 {
     MKAnnotationView *pin = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@""];
     pin.image=[UIImage imageNamed:@"annotation.png"];
-    NSLog(@"called");
     pin.canShowCallout = YES;
     pin.annotation=annotation;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -118,6 +119,7 @@
                         [UIView animateWithDuration:0.1 animations:^{
                             aV.transform = CGAffineTransformIdentity;
                             aV.image=[UIImage imageNamed:@"annotationCrack.png"];
+                            [mapView selectAnnotation:aV.annotation animated:true];
                         }];
                     }
                 }];

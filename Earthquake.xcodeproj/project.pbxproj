@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		910FDA381A9B4F3B00ECC219 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 912332321A97CA5400D78FCF /* fontawesome-webfont.ttf */; };
 		9123320A1A97C69500D78FCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 912332091A97C69500D78FCF /* main.m */; };
 		9123320D1A97C69500D78FCF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9123320C1A97C69500D78FCF /* AppDelegate.m */; };
 		912332101A97C69500D78FCF /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9123320F1A97C69500D78FCF /* MasterViewController.m */; };
@@ -300,6 +301,7 @@
 				91D77F8C1A9ABD4A00765FB9 /* annotationCrack.png in Resources */,
 				912332131A97C69500D78FCF /* Main.storyboard in Resources */,
 				912332181A97C69600D78FCF /* LaunchScreen.xib in Resources */,
+				910FDA381A9B4F3B00ECC219 /* fontawesome-webfont.ttf in Resources */,
 				91D77F901A9AC1A400765FB9 /* annotation.png in Resources */,
 				912332151A97C69500D78FCF /* Images.xcassets in Resources */,
 			);
