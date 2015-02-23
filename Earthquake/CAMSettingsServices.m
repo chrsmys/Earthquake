@@ -25,6 +25,23 @@ static CAMSettingsServices *sharedInstance;
     }
 }
 
+
+-(int)currentMagnitudeFilter{
+    if([[self standardDefaults] objectForKey:@"MagnitudeFilter"]){
+        return [[[self standardDefaults] objectForKey:@"MagnitudeFilter"] intValue];
+    }else{
+        return 0;
+    }
+}
+-(void)setCurrentMagnitudeFilter:(int)currentMagnitudeFilter{
+    //keep it within bounds
+    int magnitude = MIN(9, MAX(currentMagnitudeFilter, 0));
+    
+    [[self standardDefaults] setObject:[NSNumber numberWithInt:magnitude] forKey:@"MagnitudeFilter"];
+    [[self standardDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MagnitudeFilterChanged" object:nil];
+}
+
 #pragma mark - helper methods
 -(NSUserDefaults *)standardDefaults{
     return [NSUserDefaults standardUserDefaults];

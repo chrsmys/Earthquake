@@ -10,5 +10,6 @@
 #import <MapKit/MapKit.h>
 @interface CAMSettingsServices : NSObject
 @property (nonatomic) MKMapType mapType;
+@property (nonatomic) int currentMagnitudeFilter;
 +(CAMSettingsServices *)sharedInstance;
 @end

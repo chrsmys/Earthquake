@@ -7,7 +7,7 @@
 //
 
 #import "CAMFilterMagnitudeTableViewController.h"
-
+#import "CAMSettingsServices.h"
 @interface CAMFilterMagnitudeTableViewController ()
 
 @end
@@ -16,12 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,6 +23,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([[CAMSettingsServices sharedInstance] currentMagnitudeFilter]==indexPath.row) {
+        cell.accessoryType=UITableViewCellAccessoryCheckmark;
+    }else{
+        cell.accessoryType=UITableViewCellAccessoryNone;
+    }
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //Set the magnitude filter and reload data to display proper selection
+    [[CAMSettingsServices sharedInstance] setCurrentMagnitudeFilter:(int)indexPath.row];
+    [self.tableView reloadData];
+}
 #pragma mark - Table view data source
 
 /*

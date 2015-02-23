@@ -7,6 +7,7 @@
 //
 
 #import "CAMEventServices.h"
+#import "CAMSettingsServices.h"
 #import "NSDateFormatter+Constructors.h"
 #import "CamEvent.h"
 @implementation CAMEventServices{
@@ -23,10 +24,15 @@ static CAMEventServices *sharedInstance;
     if(self){
         _eventList=[[NSMutableArray alloc] init];
         eventListUnordered = false; //An empty eventlist is ordered
+        requiresHardRefresh=false;
+        [self subscribeToEvents];
     }
     return self;
 }
 
+-(void)subscribeToEvents{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changedMagFilter) name:@"MagnitudeFilterChanged" object:nil];
+}
 -(void)setEventList:(NSMutableArray *)eventList{
     _eventList=eventList;
 }
@@ -44,7 +50,11 @@ static CAMEventServices *sharedInstance;
 
 
 #pragma mark - CAMEvent Retrieval
-
+-(void)changedMagFilter{
+    requiresHardRefresh=true;
+    lastRefreshDate=nil; //Clear refresh date because we are getting new data
+    [self refreshEvents];
+}
 /*
     Starts Process of Refreshing the Events List
  
@@ -52,18 +62,19 @@ static CAMEventServices *sharedInstance;
  */
 -(void)refreshEvents{
     NSString *query;
-    
+    NSString *minMagnitude = [NSString stringWithFormat:@"%d", [[CAMSettingsServices sharedInstance] currentMagnitudeFilter]];
     if (!lastRefreshDate){
         //Get initial event load
-        query = [self constructQueryWithOptions:@{@"format" : @"geojson", @"limit" : @"20", @"orderby" : @"time", @"eventtype" : @"earthquake"}];
+        query = [self constructQueryWithOptions:@{@"format" : @"geojson", @"limit" : @"20", @"orderby" : @"time", @"eventtype" : @"earthquake", @"minmagnitude" : minMagnitude }];
         lastRefreshDate = [NSDate date];
     }else{
         //Get results for events that happened after lastRefresh
-        query = [self constructQueryWithOptions:@{@"format" : @"geojson", @"updatedafter" : [self ISO8601StringFromDate:lastRefreshDate], @"orderby" : @"time", @"eventtype" : @"earthquake"}];
+        query = [self constructQueryWithOptions:@{@"format" : @"geojson", @"updatedafter" : [self ISO8601StringFromDate:lastRefreshDate], @"orderby" : @"time", @"eventtype" : @"earthquake", @"minmagnitude" : minMagnitude}];
     }
     
     [self performQuery:query];
 }
+
 
 /* 
     Performs the query and retrieves the results
@@ -86,6 +97,11 @@ static CAMEventServices *sharedInstance;
 }
 
 -(void)processEvents:(NSArray *)events{
+    if(requiresHardRefresh){
+        _eventList=[[NSMutableArray alloc] init];
+        requiresHardRefresh=false;
+    }
+    
     BOOL eventListUpdated = false;
     for (NSDictionary *eventData in events) {
         CamEvent *event = [[CamEvent alloc] initWithFeatureObject:eventData];

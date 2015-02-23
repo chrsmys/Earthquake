@@ -11,6 +11,7 @@
 @interface CAMEventServices : NSObject{
     NSDate *lastRefreshDate;
     BOOL eventListUnordered;
+    BOOL requiresHardRefresh; //True will clear old events data instead of merging new data into old data
 }
 
 -(void)refreshEvents;
