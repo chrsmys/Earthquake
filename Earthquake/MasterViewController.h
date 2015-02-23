@@ -10,7 +10,7 @@
 
 @interface MasterViewController : UITableViewController<UISplitViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property(nonatomic, retain) NSArray *eventList;
+@property(nonatomic, retain) NSArray *eventList; //List of events to display in the tableview
 
 @end
 

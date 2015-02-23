@@ -46,32 +46,43 @@
     [super viewDidLoad];
 }
 
--(void)subscribeToNotifications{
+#pragma mark - Notification subsctiptions
+
+/*
+    Subscribe to all notifications that self would should be aware of
+ */
+- (void)subscribeToNotifications{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleEventListChange) name:@"eventListChanged" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkError) name:@"ErrorRetrievingEvents" object:nil];
     
 }
--(void)unsubscribeToNotifications{
+
+/*
+ Subscribe to all notifications that self would should be aware of
+ */
+- (void)unsubscribeToNotifications{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - EventServices Notifications
 
+/*
+    Handles cleanup when event list changes
+ */
 -(void)handleEventListChange{
     [self.tableView performSelector:@selector(stopPullToRefreshAnimation) withObject:nil afterDelay:1.0];
-
     self.eventList = [[NSArray alloc] initWithArray:[[CAMEventServices sharedInstance] eventList] copyItems:NO];
     [self.tableView reloadData];
 }
+
+/*
+    Notifies user when there is a network error
+ */
 -(void)handleNetworkError{
     [self.tableView stopPullToRefreshAnimation];
     UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"Error Retrieving Events" message:@"Please verify you are connected to the internet" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
 }
-
-#pragma mark - TableView Delegate
-
-
 
 #pragma mark - TableView DataSource
 
@@ -102,6 +113,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
  
      CamEvent *currentEvent = [self.eventList objectAtIndex:indexPath.row];
      
+     //Create a selection view that conforms to tint color
      UIView *backgroundColorView = [[UIView alloc] init];
      backgroundColorView.backgroundColor=self.view.window.tintColor;
      cell.selectedBackgroundView=backgroundColorView;
@@ -111,6 +123,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
      UILabel *detailLabel=(UILabel *)[cell viewWithTag:2];
      UILabel *rightDetailLabel=(UILabel *)[cell viewWithTag:3];
      
+     //Set text labels accordingly
      textLabel.text=[currentEvent locationName];
      rightDetailLabel.text=[NSString stringWithFormat:@"Magnitude: %.2f",[currentEvent getMagnitude]];
      detailLabel.text=[[CAMEventServices sharedInstance] formatEventDate:[currentEvent getTimeOfEvent]];
@@ -121,7 +134,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 #pragma mark - SplitViewController Delegate
 
--(BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController{
+- (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController{
     
     //If there is a selection then the splitview controller should
     //show the detail view
@@ -137,10 +150,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"MoveToMapDetailView"]) {
         id tempDestination = segue.destinationViewController;
+        
+        //Handle the case where MapViewController could be in a navigation controller
         if([segue.destinationViewController isKindOfClass:[UINavigationController class]]){
             tempDestination = [(UINavigationController *)tempDestination topViewController];
         }
         
+        //Insert the selected event into the eventlist
         CAMMapViewController *destination = tempDestination;
         CamEvent *selectedEvent = [_eventList objectAtIndex:[self.tableView indexPathForSelectedRow].row];
         [destination setEventList:@[selectedEvent]];
