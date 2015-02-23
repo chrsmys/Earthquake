@@ -9,7 +9,10 @@
 #import "NSDictionary+Constructors.h"
 
 @implementation NSDictionary (Constructors)
--(NSDictionary *)dictionaryByReplacingNSNullWithString{
+/*
+    Returns a copy of self with all instance of nsnull removed
+ */
+- (NSDictionary *)dictionaryByReplacingNSNullWithString{
     id nul = [NSNull null];
     NSMutableDictionary *final = [NSMutableDictionary dictionaryWithDictionary:self];
     NSArray *keys = [final allKeys];

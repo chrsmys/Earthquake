@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDictionary (Constructors)
--(NSDictionary *)dictionaryByReplacingNSNullWithString;
+- (NSDictionary *)dictionaryByReplacingNSNullWithString; //Returns a copy of self with all instance of nsnull removed
 @end

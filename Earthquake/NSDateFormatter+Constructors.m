@@ -9,7 +9,10 @@
 #import "NSDateFormatter+Constructors.h"
 
 @implementation NSDateFormatter (Constructors)
-+(NSDateFormatter *)ISO8601Formatter{
+/*
+  Creates a formatter that will output an ISO8601 date string
+ */
++ (NSDateFormatter *)ISO8601Formatter{
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
     return formatter;
