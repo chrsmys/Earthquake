@@ -50,6 +50,13 @@
     return self;
 }
 
+//Don't use this
+- (id)initWithLocation:(CLLocationCoordinate2D)coord{
+    self = [super init];
+    self.coordinate=coord;
+    return self;
+}
+
 - (NSNumber *)getLongitude{
     return [self.featureDictionary objectForKey:@"longitude"];
 }
