@@ -10,7 +10,6 @@
 #import "CAMEventServices.h"
 #import "CamEvent.h"
 #import "CAMMapViewController.h"
-#import "UIScrollView+UzysAnimatedGifPullToRefresh.h"
 #import "Earthquake-Swift.h"
 @interface MasterViewController ()
 
@@ -33,16 +32,6 @@
     
     [self subscribeToNotifications];
     [[CAMEventServices sharedInstance] refreshEvents];
-    
-    __weak CAMEventServices *eventService =[CAMEventServices sharedInstance];
-    
-    [self.tableView addPullToRefreshActionHandler:^{
-        [eventService refreshEvents];
-    }
-                            ProgressImagesGifName:@"ajax-loader.gif"
-                             LoadingImagesGifName:@"ajax-loader.gif"
-                          ProgressScrollThreshold:60
-                            LoadingImageFrameRate:30];
     
     emptyDataSource = [[EmptyMasterViewControllerDataSource alloc] init];
     
@@ -73,7 +62,6 @@
     Handles cleanup when event list changes
  */
 -(void)handleEventListChange{
-    [self.tableView performSelector:@selector(stopPullToRefreshAnimation) withObject:nil afterDelay:1.0];
     self.eventList = [[NSArray alloc] initWithArray:[[CAMEventServices sharedInstance] eventList] copyItems:NO];
    
     if ([self.eventList count]>0) {
@@ -93,7 +81,6 @@
     Notifies user when there is a network error
  */
 -(void)handleNetworkError{
-    [self.tableView stopPullToRefreshAnimation];
     UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"Error Retrieving Events" message:@"Please verify you are connected to the internet" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
 }
