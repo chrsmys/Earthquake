@@ -19,7 +19,7 @@ static CAMEventServices *sharedInstance;
 
  NSString *const apiURL = @"http://comcat.cr.usgs.gov/fdsnws/event/1/query";
 
--(id)init{
+- (id)init{
     self=[super init];
     if(self){
         _eventList=[[NSMutableArray alloc] init];
@@ -30,14 +30,22 @@ static CAMEventServices *sharedInstance;
     return self;
 }
 
--(void)subscribeToEvents{
+/*
+    Subscribes to important events this modal needs to be aware of
+ */
+- (void)subscribeToEvents{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changedMagFilter) name:@"MagnitudeFilterChanged" object:nil];
 }
--(void)setEventList:(NSMutableArray *)eventList{
+
+- (void)setEventList:(NSMutableArray *)eventList{
     _eventList=eventList;
 }
 
--(NSArray *)eventList{
+/**
+    Returns a list of events retrieved fromt the api
+    this list will be in order by my recent date
+ */
+- (NSArray *)eventList{
     if(eventListUnordered){
         _eventList =[NSMutableArray arrayWithArray:[_eventList sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
             NSDate *firstDate = [(CamEvent*)a getTimeOfEvent];
@@ -50,17 +58,20 @@ static CAMEventServices *sharedInstance;
 
 
 #pragma mark - CAMEvent Retrieval
--(void)changedMagFilter{
+
+
+- (void)changedMagFilter{
     requiresHardRefresh=true;
     lastRefreshDate=nil; //Clear refresh date because we are getting new data
     [self refreshEvents];
 }
+
 /*
     Starts Process of Refreshing the Events List
  
     Note: This will load new events and update current events
  */
--(void)refreshEvents{
+- (void)refreshEvents{
     NSString *query;
     NSString *minMagnitude = [NSString stringWithFormat:@"%d", [[CAMSettingsServices sharedInstance] currentMagnitudeFilter]];
     if (!lastRefreshDate){
@@ -79,10 +90,15 @@ static CAMEventServices *sharedInstance;
 /* 
     Performs the query and retrieves the results
  */
--(void)performQuery:(NSString *)query{
+- (void)performQuery:(NSString *)query{
+    
+    
     NSURL *queryURL = [NSURL URLWithString:query];
+    
+    //Create weak verions of objects so they don't get captured by the blocks
     __weak CAMEventServices *weakself = self;
     __weak NSNotificationCenter *weaknotificationCenter = [NSNotificationCenter defaultCenter];
+   
     NSURLSessionDataTask *data = [[NSURLSession sharedSession] dataTaskWithURL:queryURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -94,10 +110,18 @@ static CAMEventServices *sharedInstance;
             [weaknotificationCenter postNotificationName:@"ErrorRetrievingEvents" object:nil];
         }
     }];
+    
     [data resume];
 }
 
--(void)processEvents:(NSArray *)events{
+/*
+    Handles merging events into _eventList
+        •Makes sure there are no duplicate events
+        •Handles hard refreshes
+ */
+- (void)processEvents:(NSArray *)events{
+   
+    //If there was a hard refresh clear the current data
     if(requiresHardRefresh){
         _eventList=[[NSMutableArray alloc] init];
         requiresHardRefresh=false;
@@ -120,8 +144,8 @@ static CAMEventServices *sharedInstance;
         eventListUpdated = true;
     }
     
+    //Notify observers of the change
     [[NSNotificationCenter defaultCenter] postNotificationName:@"eventListChanged" object:nil];
-    
 }
 
 #pragma mark - Helper Methods
@@ -133,7 +157,7 @@ static CAMEventServices *sharedInstance;
     For list of query options refer to: 
     http://comcat.cr.usgs.gov/fdsnws/event/1/application.wadl
  */
--(NSString *)constructQueryWithOptions:(NSDictionary *)options{
+- (NSString *)constructQueryWithOptions:(NSDictionary *)options{
     NSArray *keys=[options allKeys];
     NSMutableString *query=[NSMutableString stringWithString:apiURL];
     [query appendString:@"?"];
@@ -152,12 +176,18 @@ static CAMEventServices *sharedInstance;
     return query;
 }
 
--(NSString *)ISO8601StringFromDate:(NSDate *)date{
+/**
+    Creates a properly formated ISO8601 string from date
+ */
+- (NSString *)ISO8601StringFromDate:(NSDate *)date{
     NSDateFormatter *isoFormatter = [NSDateFormatter ISO8601Formatter];
     return [isoFormatter stringFromDate:date];
 }
 
--(NSString *)formatEventDate:(NSDate *)date{
+/*
+    Formats an event date for displaying
+ */
+- (NSString *)formatEventDate:(NSDate *)date{
     NSDateFormatter *formatter =[[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterShortStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
@@ -166,7 +196,7 @@ static CAMEventServices *sharedInstance;
 }
 #pragma mark - Shared Instance
 
-+(CAMEventServices *)sharedInstance{
++ (CAMEventServices *)sharedInstance{
     if(!sharedInstance){
         sharedInstance=[[CAMEventServices alloc] init];
     }
