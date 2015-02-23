@@ -75,11 +75,21 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventCell" forIndexPath:indexPath];
+ 
+     //Create custom cell inside of Main.storyboard
+     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventCell" forIndexPath:indexPath];
  
      CamEvent *currentEvent = [self.eventList objectAtIndex:indexPath.row];
-     cell.textLabel.text=[currentEvent locationName];
-     cell.detailTextLabel.text=[currentEvent alertLevel];
+     
+     //Retrieve labels from custom cell
+     UILabel *textLabel=(UILabel *)[cell viewWithTag:1];
+     UILabel *detailLabel=(UILabel *)[cell viewWithTag:2];
+     UILabel *rightDetailLabel=(UILabel *)[cell viewWithTag:3];
+     
+     textLabel.text=[currentEvent locationName];
+     rightDetailLabel.text=[NSString stringWithFormat:@"Magnitude: %.2f",[currentEvent getMagnitude]];
+     detailLabel.text=[[CAMEventServices sharedInstance] formatEventDate:[currentEvent getTimeOfEvent]];
+     
      return cell;
  }
 

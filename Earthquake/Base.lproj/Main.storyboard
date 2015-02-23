@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vrf-gR-ZmN">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Event Map-->
@@ -151,6 +152,53 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tKf-2Y-fho" id="PuB-UK-G8d">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CX-Od-mQt">
+                                            <rect key="frame" x="569" y="21.5" width="23" height="13.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lab" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sYg-2h-pfV">
+                                            <rect key="frame" x="29" y="-4" width="23.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMe-WN-RT3">
+                                            <rect key="frame" x="29" y="22" width="28.5" height="13.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="sYg-2h-pfV" firstAttribute="top" secondItem="PuB-UK-G8d" secondAttribute="topMargin" constant="-8" id="14x-rS-4X0"/>
+                                        <constraint firstItem="sMe-WN-RT3" firstAttribute="top" secondItem="sYg-2h-pfV" secondAttribute="bottom" constant="5" id="1tC-ch-bCW"/>
+                                        <constraint firstAttribute="centerY" secondItem="2CX-Od-mQt" secondAttribute="centerY" id="4xH-HK-7xp"/>
+                                        <constraint firstItem="sMe-WN-RT3" firstAttribute="leading" secondItem="sYg-2h-pfV" secondAttribute="leading" id="DRO-dR-wbX"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="2CX-Od-mQt" secondAttribute="bottom" constant="6.5" id="Dyu-La-sgm"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="sYg-2h-pfV" secondAttribute="trailing" constant="5" id="NEO-9N-pWH"/>
+                                        <constraint firstAttribute="centerX" secondItem="2CX-Od-mQt" secondAttribute="centerX" constant="-271" id="NPF-S2-K5g"/>
+                                        <constraint firstItem="2CX-Od-mQt" firstAttribute="trailing" secondItem="PuB-UK-G8d" secondAttribute="trailingMargin" id="PCV-7C-beL"/>
+                                        <constraint firstItem="sMe-WN-RT3" firstAttribute="centerY" secondItem="2CX-Od-mQt" secondAttribute="centerY" id="SUf-Pf-gK3"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="sMe-WN-RT3" secondAttribute="bottom" id="erf-er-WS5"/>
+                                        <constraint firstItem="2CX-Od-mQt" firstAttribute="top" secondItem="PuB-UK-G8d" secondAttribute="topMargin" id="gqS-M3-aEB"/>
+                                        <constraint firstItem="2CX-Od-mQt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sYg-2h-pfV" secondAttribute="trailing" constant="5" id="jHV-26-Caj"/>
+                                        <constraint firstItem="sYg-2h-pfV" firstAttribute="leading" secondItem="PuB-UK-G8d" secondAttribute="leadingMargin" constant="21" id="lsK-L4-fGh"/>
+                                        <constraint firstAttribute="centerY" secondItem="sYg-2h-pfV" secondAttribute="centerY" id="xea-Xg-hQg"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="14x-rS-4X0"/>
+                                            <exclude reference="xea-Xg-hQg"/>
+                                            <exclude reference="4xH-HK-7xp"/>
+                                            <exclude reference="Dyu-La-sgm"/>
+                                            <exclude reference="NPF-S2-K5g"/>
+                                            <exclude reference="gqS-M3-aEB"/>
+                                            <exclude reference="jHV-26-Caj"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="rSd-ja-7xD" kind="showDetail" identifier="MoveToMapDetailView" id="yYU-aK-Vc2"/>
