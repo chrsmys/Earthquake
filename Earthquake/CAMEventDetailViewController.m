@@ -16,19 +16,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+-(void)viewWillAppear:(BOOL)animated{
+    self.eventName.text=[_currentEvent locationName];
+}
 -(void)viewDidAppear:(BOOL)animated{
+    self.seismometer.magnitude=[_currentEvent getMagnitude];
     [self.seismometer drawPath:true];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)setCurrentEvent:(CamEvent *)currentEvent{
+    _currentEvent=currentEvent;
+    self.seismometer.magnitude=[currentEvent getMagnitude];
 }
 
 #pragma mark - Table view data source

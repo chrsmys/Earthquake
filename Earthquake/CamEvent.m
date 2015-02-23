@@ -105,6 +105,10 @@
     return dateString;
 }
 
+-(double)getMagnitude{
+    return [[self.featureDictionary objectForKey:@"mag"] doubleValue];
+}
+
 -(CLLocationCoordinate2D)coordinate{
     return  CLLocationCoordinate2DMake((CLLocationDegrees)[[self getLatitude] doubleValue], (CLLocationDegrees)[[self getLongitude] doubleValue]);
 }

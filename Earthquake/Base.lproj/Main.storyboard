@@ -204,8 +204,8 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="147"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earthquake Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sG5-48-xYv">
-                                    <rect key="frame" x="170" y="18" width="259" height="39.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earthquake Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sG5-48-xYv">
+                                    <rect key="frame" x="170" y="18" width="259" height="40"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
@@ -228,8 +228,12 @@
                                 <constraint firstAttribute="centerX" secondItem="sG5-48-xYv" secondAttribute="centerX" id="LYD-1H-rHh"/>
                                 <constraint firstAttribute="trailing" secondItem="UKy-X2-Izx" secondAttribute="trailing" id="OBU-09-YdO"/>
                                 <constraint firstItem="UKy-X2-Izx" firstAttribute="leading" secondItem="NKO-f2-8fR" secondAttribute="leading" id="h3U-Dw-E12"/>
+                                <constraint firstItem="sG5-48-xYv" firstAttribute="top" secondItem="NKO-f2-8fR" secondAttribute="top" constant="18" id="iRN-Cv-lJ5"/>
                                 <constraint firstAttribute="centerY" secondItem="sG5-48-xYv" secondAttribute="centerY" constant="35.5" id="leP-SP-moh"/>
+                                <constraint firstItem="sG5-48-xYv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NKO-f2-8fR" secondAttribute="leading" constant="5" id="pip-zO-beb"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sG5-48-xYv" secondAttribute="trailing" constant="5" id="wAO-yQ-PR2"/>
                                 <constraint firstAttribute="bottom" secondItem="UKy-X2-Izx" secondAttribute="bottom" id="xaZ-4d-9OM"/>
+                                <constraint firstItem="sG5-48-xYv" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="UKy-X2-Izx" secondAttribute="top" constant="-5" id="zQH-jQ-8rr"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -253,6 +257,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="eventName" destination="sG5-48-xYv" id="Sh7-Xx-Hde"/>
                         <outlet property="seismometer" destination="UKy-X2-Izx" id="ebg-2b-fYj"/>
                     </connections>
                 </tableViewController>

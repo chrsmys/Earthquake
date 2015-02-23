@@ -8,7 +8,8 @@
 
 #import "CAMMapViewController.h"
 #import "CamEvent.h"
-#import "CAMEventAnnotation.h"
+#import "CAMEventDetailViewController.h"
+
 @interface CAMMapViewController ()
 
 @end
@@ -53,13 +54,18 @@
 {
     MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@""];
     pin.canShowCallout = YES;
+    pin.annotation=annotation;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     pin.rightCalloutAccessoryView = button;
     return pin;
 }
 
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
-    [self performSegueWithIdentifier:@"ShowAnnotationDetail" sender:nil];
+    if ([view.annotation isKindOfClass:[CamEvent class]]){
+        CamEvent *event = view.annotation;
+        recentlySelectedEvent=event;
+        [self performSegueWithIdentifier:@"ShowAnnotationDetail" sender:event];
+    }
 }
 
 -(void)zoomMapToAnnotation:(id<MKAnnotation>)annotation{
@@ -67,14 +73,21 @@
     [self.eventMapView setRegion:mapRegion animated:true];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"ShowAnnotationDetail"]) {
+        id tempDestination = segue.destinationViewController;
+        if([segue.destinationViewController isKindOfClass:[UINavigationController class]]){
+            tempDestination = [(UINavigationController *)tempDestination topViewController];
+        }
+        
+        CAMEventDetailViewController *destination = tempDestination;
+        destination.currentEvent = recentlySelectedEvent;
+    }
 }
-*/
+
 
 @end

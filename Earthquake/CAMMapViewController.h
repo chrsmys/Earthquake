@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-@interface CAMMapViewController : UIViewController <MKMapViewDelegate>
+#import "CamEvent.h"
+@interface CAMMapViewController : UIViewController <MKMapViewDelegate>{
+    __weak CamEvent *recentlySelectedEvent;
+}
 @property (weak, nonatomic) IBOutlet MKMapView *eventMapView;
 @property (nonatomic, strong) NSArray *eventList;
 @end

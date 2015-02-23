@@ -18,6 +18,7 @@
 -(NSNumber *)getLongitude;
 -(NSNumber *)getLatitude;
 -(NSDate *)getTimeOfEvent; //Returns the date the event occured
+-(double)getMagnitude;
 
 @property (nonatomic, retain) NSMutableDictionary *featureDictionary;
 
