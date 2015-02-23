@@ -75,7 +75,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Map" id="X8W-7U-AKi">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2zg-Dg-swg">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="2zg-Dg-swg">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2zg-Dg-swg" id="CUW-9k-A4G">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -87,6 +87,9 @@
                                                         <segment title="Hybrid"/>
                                                         <segment title="Sattelite"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="mapTypeChanged:" destination="ElC-CT-bbA" eventType="valueChanged" id="tlE-mG-1to"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -110,6 +113,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapTypeSegmentedControl" destination="RrH-lK-cXl" id="hLh-DP-vfs"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lkq-iu-jjk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

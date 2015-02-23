@@ -9,7 +9,7 @@
 #import "CAMMapViewController.h"
 #import "CamEvent.h"
 #import "CAMEventDetailViewController.h"
-
+#import "CAMSettingsServices.h"
 @interface CAMMapViewController ()
 
 @end
@@ -21,6 +21,8 @@
     [super viewDidLoad];
     self.eventMapView.delegate=self;
     [self changeAnnotationsWithEvents:_eventList];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mapTypeChanged) name:@"MapTypeChanged" object:nil];
+    [self.eventMapView setMapType:[[CAMSettingsServices sharedInstance] mapType]];
     // Do any additional setup after loading the view.
 }
 
@@ -47,6 +49,10 @@
     if ([[self.eventMapView annotations] count]>1) {
         [self.eventMapView showAnnotations:[self.eventMapView annotations] animated:true];
     }
+}
+
+-(void)mapTypeChanged{
+    [self.eventMapView setMapType:[[CAMSettingsServices sharedInstance] mapType]];
 }
 
 #pragma MapView Delegate

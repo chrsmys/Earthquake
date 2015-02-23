@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <MapKit/MapKit.h>
 @interface CAMSettingsTableViewController : UITableViewController
+@property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
+
 - (IBAction)doneButtonPressed:(id)sender;
+- (IBAction)mapTypeChanged:(UISegmentedControl *)sender;
 
 @end

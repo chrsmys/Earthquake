@@ -9,8 +9,26 @@
 #import "CAMSettingsServices.h"
 
 @implementation CAMSettingsServices
+@synthesize mapType=_mapType;
 static CAMSettingsServices *sharedInstance;
 
+-(void)setMapType:(MKMapType)mapType{
+    [[self standardDefaults] setObject:[NSNumber numberWithInt:mapType] forKey:@"MapType"];
+    [[self standardDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MapTypeChanged" object:nil];
+}
+-(MKMapType)mapType{
+    if([[self standardDefaults] objectForKey:@"MapType"]){
+        return [[[self standardDefaults] objectForKey:@"MapType"] intValue];
+    }else{
+        return MKMapTypeStandard;
+    }
+}
+
+#pragma mark - helper methods
+-(NSUserDefaults *)standardDefaults{
+    return [NSUserDefaults standardUserDefaults];
+}
 #pragma mark - Shared Instance
 
 +(CAMSettingsServices *)sharedInstance{

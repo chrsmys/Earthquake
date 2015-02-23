@@ -7,6 +7,7 @@
 //
 
 #import "CAMSettingsTableViewController.h"
+#import "CAMSettingsServices.h"
 
 @interface CAMSettingsTableViewController ()
 
@@ -23,7 +24,21 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    switch ([[CAMSettingsServices sharedInstance] mapType]) {
+        case MKMapTypeStandard:
+            self.mapTypeSegmentedControl.selectedSegmentIndex=0;
+            break;
+        case MKMapTypeHybrid:
+            self.mapTypeSegmentedControl.selectedSegmentIndex=1;
+            break;
+        case MKMapTypeSatellite:
+            self.mapTypeSegmentedControl.selectedSegmentIndex=2;
+            break;
+        default:
+            break;
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -96,5 +111,21 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (IBAction)doneButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)mapTypeChanged:(UISegmentedControl *)sender {
+    MKMapType mapType;
+    switch (sender.selectedSegmentIndex) {
+        case 1:
+            mapType = MKMapTypeHybrid;
+            break;
+        case 2:
+            mapType = MKMapTypeSatellite;
+            break;
+        default:
+            mapType = MKMapTypeStandard;
+            break;
+    }
+    [[CAMSettingsServices sharedInstance] setMapType:mapType];
 }
 @end

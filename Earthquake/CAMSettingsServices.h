@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <MapKit/MapKit.h>
 @interface CAMSettingsServices : NSObject
-
+@property (nonatomic) MKMapType mapType;
 +(CAMSettingsServices *)sharedInstance;
 @end
