@@ -153,8 +153,6 @@
 				912332331A97D30E00D78FCF /* Detail */,
 				912332111A97C69500D78FCF /* Main.storyboard */,
 				912332141A97C69500D78FCF /* Images.xcassets */,
-				91D77F8F1A9AC1A400765FB9 /* annotation.png */,
-				91D77F8B1A9ABD4A00765FB9 /* annotationCrack.png */,
 				912332161A97C69600D78FCF /* LaunchScreen.xib */,
 				912332071A97C69500D78FCF /* Supporting Files */,
 				9191AD171A9A7AAA0024BBCD /* Earthquake-Bridging-Header.h */,
@@ -165,6 +163,8 @@
 		912332071A97C69500D78FCF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				91D77F8F1A9AC1A400765FB9 /* annotation.png */,
+				91D77F8B1A9ABD4A00765FB9 /* annotationCrack.png */,
 				912332321A97CA5400D78FCF /* fontawesome-webfont.ttf */,
 				912332081A97C69500D78FCF /* Info.plist */,
 				912332091A97C69500D78FCF /* main.m */,

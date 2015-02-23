@@ -12,7 +12,7 @@
 @interface CAMMapViewController : UIViewController <MKMapViewDelegate>{
     __weak CamEvent *recentlySelectedEvent;
 }
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
-@property (weak, nonatomic) IBOutlet MKMapView *eventMapView;
-@property (nonatomic, strong) NSArray *eventList;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton; //The button displayed in the navigation bar
+@property (weak, nonatomic) IBOutlet MKMapView *eventMapView; // Map that displays the event annotations
+@property (nonatomic, strong) NSArray *eventList; //The list of events that should be displayed in the map
 @end

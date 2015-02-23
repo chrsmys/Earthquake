@@ -19,26 +19,50 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //Set the settings button to a cog
+    // List of unicode characters in FontAwesome
+    // http://fortawesome.github.io/Font-Awesome/cheatsheet/
+    [_settingsButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName,nil] forState:UIControlStateNormal];
+    _settingsButton.title=@"\uf013";
+    
+    [self subscribeToEvents];
+    
     self.eventMapView.delegate=self;
     [self changeAnnotationsWithEvents:_eventList];
-    [_settingsButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"FontAwesome" size:26.0], UITextAttributeFont,nil] forState:UIControlStateNormal];
-    _settingsButton.title=@"\uf013";
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mapTypeChanged) name:@"MapTypeChanged" object:nil];
+    
+    //Get the current maptype from the settings service
     [self.eventMapView setMapType:[[CAMSettingsServices sharedInstance] mapType]];
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Settings Observers
+
+//Adds self as an observer to notifications it should be aware of
+- (void)subscribeToEvents{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mapTypeChanged) name:@"MapTypeChanged" object:nil];
 }
 
--(void)setEventList:(NSArray *)eventList{
+//Unscubscribes self to all events
+- (void)unsubscribeToEvents{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+//Updates the map type to the settings maptype
+- (void)mapTypeChanged{
+    [self.eventMapView setMapType:[[CAMSettingsServices sharedInstance] mapType]];
+}
+
+#pragma mark - Event Changes
+
+- (void)setEventList:(NSArray *)eventList{
     _eventList=eventList;
     [self changeAnnotationsWithEvents:_eventList];
 }
 
--(void)changeAnnotationsWithEvents:(NSArray *)eventList{
+/*
+    Adds annotations to the map and zooms to the annotations
+ */
+- (void)changeAnnotationsWithEvents:(NSArray *)eventList{
     [self.eventMapView removeAnnotations:[self.eventMapView annotations]];
     
     for (CamEvent *event in eventList) {
@@ -53,12 +77,11 @@
     }
 }
 
--(void)mapTypeChanged{
-    [self.eventMapView setMapType:[[CAMSettingsServices sharedInstance] mapType]];
-}
 
-#pragma MapView Delegate
--(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+
+#pragma mark - MapView Delegate
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     MKAnnotationView *pin = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@""];
     pin.image=[UIImage imageNamed:@"annotation.png"];
@@ -69,8 +92,10 @@
     return pin;
 }
 
--(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+    
     if ([view.annotation isKindOfClass:[CamEvent class]]){
+        //Display event detail controller
         CamEvent *event = view.annotation;
         recentlySelectedEvent=event;
         [self performSegueWithIdentifier:@"ShowAnnotationDetail" sender:event];
@@ -130,7 +155,12 @@
     }
 }
 
--(void)zoomMapToAnnotation:(id<MKAnnotation>)annotation{
+#pragma mark - Map Helper Methods
+
+/*
+    Handles zooming to a particular annotation on the eventmap
+ */
+- (void)zoomMapToAnnotation:(id<MKAnnotation>)annotation{
     MKCoordinateRegion mapRegion = MKCoordinateRegionMake([annotation coordinate], MKCoordinateSpanMake(4.0, 4.0));
     [self.eventMapView setRegion:mapRegion animated:true];
 }
@@ -151,5 +181,9 @@
     }
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end
