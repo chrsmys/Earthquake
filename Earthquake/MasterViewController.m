@@ -24,7 +24,6 @@
 
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
-    [self.navigationController.view setTintColor:[UIColor redColor]];
     self.splitViewController.delegate=self;
     [self setCollapseSecondaryViewOnPrimary:true];
 
@@ -80,6 +79,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
      UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventCell" forIndexPath:indexPath];
  
      CamEvent *currentEvent = [self.eventList objectAtIndex:indexPath.row];
+     
+     UIView *backgroundColorView = [[UIView alloc] init];
+     backgroundColorView.backgroundColor=self.view.window.tintColor;
+     cell.selectedBackgroundView=backgroundColorView;
      
      //Retrieve labels from custom cell
      UILabel *textLabel=(UILabel *)[cell viewWithTag:1];

@@ -36,7 +36,11 @@ import UIKit
         lineShape = CAShapeLayer()
         if let lineShape = lineShape {
             lineShape.path = bezierPath.CGPath
-            lineShape.strokeColor = UIColor.blackColor().CGColor
+            if let window = self.window{
+                lineShape.strokeColor = window.tintColor.CGColor
+            }else{
+                lineShape.strokeColor = UIColor.blackColor().CGColor
+            }
             lineShape.fillColor = UIColor.clearColor().CGColor
             lineShape.lineWidth = 2.0
             lineShape.strokeStart = 0.0
