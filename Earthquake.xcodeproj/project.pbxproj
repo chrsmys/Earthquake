@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		910FDA381A9B4F3B00ECC219 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 912332321A97CA5400D78FCF /* fontawesome-webfont.ttf */; };
+		910FDA3C1A9B5A1D00ECC219 /* CAMFilterMagnitudeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 910FDA3B1A9B5A1D00ECC219 /* CAMFilterMagnitudeTableViewController.m */; };
 		9123320A1A97C69500D78FCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 912332091A97C69500D78FCF /* main.m */; };
 		9123320D1A97C69500D78FCF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9123320C1A97C69500D78FCF /* AppDelegate.m */; };
 		912332101A97C69500D78FCF /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9123320F1A97C69500D78FCF /* MasterViewController.m */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		910FDA3A1A9B5A1D00ECC219 /* CAMFilterMagnitudeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMFilterMagnitudeTableViewController.h; sourceTree = "<group>"; };
+		910FDA3B1A9B5A1D00ECC219 /* CAMFilterMagnitudeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAMFilterMagnitudeTableViewController.m; sourceTree = "<group>"; };
 		912332041A97C69500D78FCF /* Earthquake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Earthquake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		912332081A97C69500D78FCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		912332091A97C69500D78FCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -96,6 +99,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		910FDA391A9B59F100ECC219 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				912332351A97D35F00D78FCF /* CAMSettingsTableViewController.h */,
+				912332361A97D35F00D78FCF /* CAMSettingsTableViewController.m */,
+				910FDA3A1A9B5A1D00ECC219 /* CAMFilterMagnitudeTableViewController.h */,
+				910FDA3B1A9B5A1D00ECC219 /* CAMFilterMagnitudeTableViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		912331FB1A97C69500D78FCF = {
 			isa = PBXGroup;
 			children = (
@@ -167,10 +181,9 @@
 		912332331A97D30E00D78FCF /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				910FDA391A9B59F100ECC219 /* Settings */,
 				9123322D1A97C78800D78FCF /* CAMMapViewController.h */,
 				9123322E1A97C78800D78FCF /* CAMMapViewController.m */,
-				912332351A97D35F00D78FCF /* CAMSettingsTableViewController.h */,
-				912332361A97D35F00D78FCF /* CAMSettingsTableViewController.m */,
 				912332381A97D3BE00D78FCF /* CAMEventDetailViewController.h */,
 				912332391A97D3BE00D78FCF /* CAMEventDetailViewController.m */,
 			);
@@ -330,6 +343,7 @@
 				9123320D1A97C69500D78FCF /* AppDelegate.m in Sources */,
 				912332451A97E1F400D78FCF /* CamEvent.m in Sources */,
 				9123320A1A97C69500D78FCF /* main.m in Sources */,
+				910FDA3C1A9B5A1D00ECC219 /* CAMFilterMagnitudeTableViewController.m in Sources */,
 				9191AD191A9A7AAA0024BBCD /* CAMSeismograph.swift in Sources */,
 				9191AD0F1A99517E0024BBCD /* NSDictionary+Constructors.m in Sources */,
 				9123322F1A97C78800D78FCF /* CAMMapViewController.m in Sources */,
