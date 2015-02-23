@@ -119,7 +119,9 @@
                         [UIView animateWithDuration:0.1 animations:^{
                             aV.transform = CGAffineTransformIdentity;
                             aV.image=[UIImage imageNamed:@"annotationCrack.png"];
-                            [mapView selectAnnotation:aV.annotation animated:true];
+                            if(aV && aV.annotation){
+                                [mapView selectAnnotation:aV.annotation animated:true];
+                            }
                         }];
                     }
                 }];
