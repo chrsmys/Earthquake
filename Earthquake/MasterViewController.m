@@ -26,7 +26,7 @@
     self.tableView.dataSource=self;
     self.splitViewController.delegate=self;
     [self setCollapseSecondaryViewOnPrimary:true];
-
+    self.clearsSelectionOnViewWillAppear=NO;
     self.eventList = [NSArray array];
     
     [self subscribeToNotifications];
@@ -100,6 +100,14 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - SplitViewController Delegate
 
 -(BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController{
+    
+    //If there is a selection then the splitview controller should
+    //show the detail view
+    if ([self.tableView indexPathForSelectedRow]!=nil) {
+        return !self.collapseSecondaryViewOnPrimary;
+    }
+    
+    //Else show the master
     return self.collapseSecondaryViewOnPrimary;
 }
 
