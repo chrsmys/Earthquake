@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
-@interface CamEvent : NSObject <MKAnnotation>
+@interface CamEvent : NSObject <MKAnnotation>{
+    NSDictionary *humanReadableKeys;
+}
 
 -(id)initWithFeatureObject:(NSDictionary *)feature;
 
@@ -19,6 +21,7 @@
 -(NSNumber *)getLatitude;
 -(NSDate *)getTimeOfEvent; //Returns the date the event occured
 -(double)getMagnitude;
+-(NSString *)replaceKeyWithHumanReadableKey:(NSString *)key;
 
 @property (nonatomic, retain) NSMutableDictionary *featureDictionary;
 

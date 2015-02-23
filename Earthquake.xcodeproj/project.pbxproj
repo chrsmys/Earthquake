@@ -24,6 +24,8 @@
 		912332501A982AAC00D78FCF /* NSDateFormatter+Constructors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9123324F1A982AAC00D78FCF /* NSDateFormatter+Constructors.m */; };
 		9191AD0F1A99517E0024BBCD /* NSDictionary+Constructors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9191AD0E1A99517E0024BBCD /* NSDictionary+Constructors.m */; };
 		9191AD191A9A7AAA0024BBCD /* CAMSeismograph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191AD181A9A7AAA0024BBCD /* CAMSeismograph.swift */; };
+		91D77F8C1A9ABD4A00765FB9 /* annotationCrack.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D77F8B1A9ABD4A00765FB9 /* annotationCrack.png */; };
+		91D77F901A9AC1A400765FB9 /* annotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D77F8F1A9AC1A400765FB9 /* annotation.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		9191AD0E1A99517E0024BBCD /* NSDictionary+Constructors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Constructors.m"; sourceTree = "<group>"; };
 		9191AD171A9A7AAA0024BBCD /* Earthquake-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Earthquake-Bridging-Header.h"; sourceTree = "<group>"; };
 		9191AD181A9A7AAA0024BBCD /* CAMSeismograph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAMSeismograph.swift; sourceTree = "<group>"; };
+		91D77F8B1A9ABD4A00765FB9 /* annotationCrack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = annotationCrack.png; sourceTree = "<group>"; };
+		91D77F8F1A9AC1A400765FB9 /* annotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = annotation.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 				912332331A97D30E00D78FCF /* Detail */,
 				912332111A97C69500D78FCF /* Main.storyboard */,
 				912332141A97C69500D78FCF /* Images.xcassets */,
+				91D77F8F1A9AC1A400765FB9 /* annotation.png */,
+				91D77F8B1A9ABD4A00765FB9 /* annotationCrack.png */,
 				912332161A97C69600D78FCF /* LaunchScreen.xib */,
 				912332071A97C69500D78FCF /* Supporting Files */,
 				9191AD171A9A7AAA0024BBCD /* Earthquake-Bridging-Header.h */,
@@ -291,8 +297,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91D77F8C1A9ABD4A00765FB9 /* annotationCrack.png in Resources */,
 				912332131A97C69500D78FCF /* Main.storyboard in Resources */,
 				912332181A97C69600D78FCF /* LaunchScreen.xib in Resources */,
+				91D77F901A9AC1A400765FB9 /* annotation.png in Resources */,
 				912332151A97C69500D78FCF /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

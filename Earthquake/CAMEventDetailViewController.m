@@ -54,7 +54,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"EventDetailCell"];
-    cell.textLabel.text=[NSString stringWithFormat:@"%@: %@",[keyDisplayOrder objectAtIndex:indexPath.row], [[_currentEvent featureDictionary] objectForKey:[keyDisplayOrder objectAtIndex:indexPath.row]]];
+    cell.textLabel.text=[NSString stringWithFormat:@"%@: %@",[[_currentEvent replaceKeyWithHumanReadableKey:[keyDisplayOrder objectAtIndex:indexPath.row]] capitalizedString], [[_currentEvent featureDictionary] objectForKey:[keyDisplayOrder objectAtIndex:indexPath.row]]];
     return cell;
 }
 

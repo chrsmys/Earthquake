@@ -20,16 +20,17 @@
 @implementation MasterViewController
 
 - (void)viewDidLoad {
+    self.navigationController.view.tintColor=[UIColor redColor];
+
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
-
+    [self.navigationController.view setTintColor:[UIColor redColor]];
     self.splitViewController.delegate=self;
     [self setCollapseSecondaryViewOnPrimary:true];
 
     self.eventList = [NSArray array];
     
     [self subscribeToNotifications];
-    
     [[CAMEventServices sharedInstance] refreshEvents];
     
     [super viewDidLoad];

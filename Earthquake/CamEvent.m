@@ -12,6 +12,7 @@
 @implementation CamEvent
 -(id)initWithFeatureObject:(NSDictionary *)feature{
     self = [super init];
+    humanReadableKeys = @{@"mag" : @"Magnitude", @"sig" : @"Significance", @"magType" : @"Magnitude Type"};
     if (self){
         //Validate Object
         if (![feature objectForKey:@"type"] || ![[feature objectForKey:@"type"] isEqualToString:@"Feature"] || ![feature objectForKey:@"properties"] || ! [feature objectForKey:@"id"]) {
@@ -112,4 +113,12 @@
 -(CLLocationCoordinate2D)coordinate{
     return  CLLocationCoordinate2DMake((CLLocationDegrees)[[self getLatitude] doubleValue], (CLLocationDegrees)[[self getLongitude] doubleValue]);
 }
+
+-(NSString *)replaceKeyWithHumanReadableKey:(NSString *)key{
+    if ([humanReadableKeys objectForKey:key]) {
+        return [humanReadableKeys objectForKey:key];
+    }
+    return key;
+}
+
 @end

@@ -58,7 +58,9 @@
 #pragma MapView Delegate
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
-    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@""];
+    MKAnnotationView *pin = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@""];
+    pin.image=[UIImage imageNamed:@"annotation.png"];
+    NSLog(@"called");
     pin.canShowCallout = YES;
     pin.annotation=annotation;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -71,6 +73,56 @@
         CamEvent *event = view.annotation;
         recentlySelectedEvent=event;
         [self performSegueWithIdentifier:@"ShowAnnotationDetail" sender:event];
+    }
+}
+
+/**
+    Perform drop annotation animation
+ 
+    Code Derived from StackOverflow
+ */
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
+    MKAnnotationView *aV;
+    
+    for (aV in views) {
+        
+        // Don't pin drop if annotation is user location
+        if ([aV.annotation isKindOfClass:[MKUserLocation class]]) {
+            continue;
+        }
+        
+        // Check if current annotation is inside visible map rect, else go to next one
+        MKMapPoint point =  MKMapPointForCoordinate(aV.annotation.coordinate);
+        if (!MKMapRectContainsPoint(self.eventMapView.visibleMapRect, point)) {
+            continue;
+        }
+        
+        CGRect endFrame = aV.frame;
+        
+        // Move annotation out of view
+        aV.frame = CGRectMake(aV.frame.origin.x, aV.frame.origin.y - self.view.frame.size.height, aV.frame.size.width, aV.frame.size.height);
+        
+        // Animate drop
+        [UIView animateWithDuration:0.5 delay:0.04*[views indexOfObject:aV] options: UIViewAnimationOptionCurveLinear animations:^{
+            
+            aV.frame = endFrame;
+            
+            // Animate squash
+        }completion:^(BOOL finished){
+            if (finished) {
+                [UIView animateWithDuration:0.05 animations:^{
+                    aV.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                    
+                }completion:^(BOOL finished){
+                    if (finished) {
+                        [UIView animateWithDuration:0.1 animations:^{
+                            aV.transform = CGAffineTransformIdentity;
+                            aV.image=[UIImage imageNamed:@"annotationCrack.png"];
+                        }];
+                    }
+                }];
+            }
+        }];
     }
 }
 
