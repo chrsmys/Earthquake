@@ -10,10 +10,14 @@
 #import "NSDictionary+Constructors.h"
 #import "CAMEventServices.h"
 @implementation CamEvent
--(id)initWithFeatureObject:(NSDictionary *)feature{
+- (id)initWithFeatureObject:(NSDictionary *)feature{
     self = [super init];
+    
+    //Create a list of human readble keys key= api key value = human readbale keys
     humanReadableKeys = @{@"mag" : @"Magnitude", @"sig" : @"Significance", @"magType" : @"Magnitude Type"};
+    
     if (self){
+
         //Validate Object
         if (![feature objectForKey:@"type"] || ![[feature objectForKey:@"type"] isEqualToString:@"Feature"] || ![feature objectForKey:@"properties"] || ! [feature objectForKey:@"id"]) {
             return nil;
@@ -25,7 +29,7 @@
         //Add The ID
         [self.featureDictionary  setObject:[feature objectForKey:@"id"] forKey:@"id"];
         
-        //Extract the Latitude and Longitude and insert it into the feature dictionary
+        //Extract the Latitude, Longitude, and Depth and insert it into the feature dictionary
         NSDictionary *geometryDictionary = [feature objectForKey:@"geometry"];
         if([[geometryDictionary objectForKey:@"type"] isEqualToString:@"Point"]){
             NSArray *coordinatesArray = [geometryDictionary objectForKey:@"coordinates"];
@@ -39,22 +43,22 @@
             }
         }
         
-        //Remove all instances of NSNull from out list
+        //Remove all instances of NSNull from list
         self.featureDictionary = [[NSMutableDictionary alloc] initWithDictionary:[self.featureDictionary dictionaryByReplacingNSNullWithString]];
         
     }
     return self;
 }
 
--(NSNumber *)getLongitude{
+- (NSNumber *)getLongitude{
     return [self.featureDictionary objectForKey:@"longitude"];
 }
 
--(NSNumber *)getLatitude{
+- (NSNumber *)getLatitude{
     return [self.featureDictionary objectForKey:@"latitude"];
 }
 
--(NSDate *)getTimeOfEvent{
+- (NSDate *)getTimeOfEvent{
     
     if(![self.featureDictionary objectForKey:@"time"]){
         return nil;
@@ -68,21 +72,25 @@
     return [NSDate dateWithTimeIntervalSince1970:timeInterval];
 }
 
--(NSString *)getEventID{
+- (NSString *)getEventID{
     return [self.featureDictionary objectForKey:@"id"] ?: @"Undefined";
 }
 
--(NSString *)locationName{
+- (NSString *)locationName{
     return [self.featureDictionary objectForKey:@"place"] ?: @"Undefined";
 }
 
--(NSString *)alertLevel{
+- (NSString *)alertLevel{
     return [self.featureDictionary objectForKey:@"alert"] ?: @"Undefined";
 }
 
-#pragma mark - Equal Overeides
+- (double)getMagnitude{
+    return [[self.featureDictionary objectForKey:@"mag"] doubleValue];
+}
 
--(BOOL)isEqual:(id)object{
+#pragma mark - Equal Overides
+
+- (BOOL)isEqual:(id)object{
     if (![object isKindOfClass:[self class]]) {
         return false;
     }
@@ -91,30 +99,30 @@
     return [[other getEventID] isEqualToString:[self getEventID]];
 }
 
--(NSUInteger)hash{
+- (NSUInteger)hash{
     return [[self getEventID] hash];
 }
 
--(NSString *)title{
+#pragma mark - MKAnnotation Protocol
+
+- (NSString *)title{
     return [self locationName];
 }
 
--(NSString *)subtitle{
+- (NSString *)subtitle{
     NSDate *eventDate = [self getTimeOfEvent];
     NSString *dateString = [[CAMEventServices sharedInstance] formatEventDate:eventDate];
 
     return dateString;
 }
 
--(double)getMagnitude{
-    return [[self.featureDictionary objectForKey:@"mag"] doubleValue];
-}
-
--(CLLocationCoordinate2D)coordinate{
+- (CLLocationCoordinate2D)coordinate{
     return  CLLocationCoordinate2DMake((CLLocationDegrees)[[self getLatitude] doubleValue], (CLLocationDegrees)[[self getLongitude] doubleValue]);
 }
 
--(NSString *)replaceKeyWithHumanReadableKey:(NSString *)key{
+#pragma mark - Helper Methods
+
+- (NSString *)replaceKeyWithHumanReadableKey:(NSString *)key{
     if ([humanReadableKeys objectForKey:key]) {
         return [humanReadableKeys objectForKey:key];
     }

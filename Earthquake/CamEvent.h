@@ -12,51 +12,25 @@
     NSDictionary *humanReadableKeys;
 }
 
--(id)initWithFeatureObject:(NSDictionary *)feature;
+- (id)initWithFeatureObject:(NSDictionary *)feature;
 
--(NSString *)locationName;
--(NSString *)alertLevel;
--(NSString *)getEventID;
--(NSNumber *)getLongitude;
--(NSNumber *)getLatitude;
--(NSDate *)getTimeOfEvent; //Returns the date the event occured
--(double)getMagnitude;
--(NSString *)replaceKeyWithHumanReadableKey:(NSString *)key;
+- (NSString *)locationName;
+- (NSString *)alertLevel;
+- (NSString *)getEventID;
+- (NSNumber *)getLongitude;
+- (NSNumber *)getLatitude; 
+- (double)getMagnitude;
+- (NSDate *)getTimeOfEvent; //Returns the date the event occured
 
-@property (nonatomic, retain) NSMutableDictionary *featureDictionary;
+- (NSString *)replaceKeyWithHumanReadableKey:(NSString *)key; //Replaces api keys with more readble keys
 
-//MKAnnotation
+@property (nonatomic, retain) NSMutableDictionary *featureDictionary; //This holds all of the event values
+
+//MKAnnotation Protocol
 - (id)initWithLocation:(CLLocationCoordinate2D)coord;
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly, copy) NSString *subtitle;
-
-
-/*
-@property (nonatomic, retain) NSString *magnitudeType; //Measurement that magnitude is in
-@property (nonatomic) double magnitude;
-
-@property (nonatomic) double intensity;
-
-@property (nonatomic) double latitude;
-@property (nonatomic) double longitude;
-
-@property (nonatomic) long totalStationsReported;
-
-@property (nonatomic, retain) NSString *place;
-
-@property (nonatomic) int signifigance;
-
-@property (nonatomic, retain) NSString *status;
-
-@property (nonatomic) long long time;
-
-@property (nonatomic, retain) NSString *type;
-
-@property (nonatomic, retain) NSURL *url;
-
-@property (nonatomic) int timezone;
- */
 
 @end
