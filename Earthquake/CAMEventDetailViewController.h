@@ -17,6 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
 @property (strong, nonatomic) CamEvent *currentEvent;
 @property (weak, nonatomic) IBOutlet CAMSeismograph *seismometer;
-- (IBAction)doneButtonPressed:(id)sender;
+- (IBAction)doneButtonPressed:(id)sender; //Dismisses modalview
 
 @end
