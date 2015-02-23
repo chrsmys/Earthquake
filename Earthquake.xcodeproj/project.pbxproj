@@ -145,7 +145,6 @@
 			children = (
 				9123320B1A97C69500D78FCF /* AppDelegate.h */,
 				9123320C1A97C69500D78FCF /* AppDelegate.m */,
-				9191AD181A9A7AAA0024BBCD /* CAMSeismograph.swift */,
 				912332471A982A1000D78FCF /* Categories */,
 				912332421A97E1C800D78FCF /* Events */,
 				9123323B1A97D72D00D78FCF /* Services */,
@@ -194,6 +193,7 @@
 		912332331A97D30E00D78FCF /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				9191AD181A9A7AAA0024BBCD /* CAMSeismograph.swift */,
 				910FDA391A9B59F100ECC219 /* Settings */,
 				9123322D1A97C78800D78FCF /* CAMMapViewController.h */,
 				9123322E1A97C78800D78FCF /* CAMMapViewController.m */,

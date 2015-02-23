@@ -11,12 +11,12 @@
 
 import UIKit
 @objc @IBDesignable class CAMSeismograph: UIView {
+    
     @IBInspectable var magnitude : CGFloat = 10.0{
         didSet {
             scaler = magnitude
         }
     }
-    
     var scaler : CGFloat = 1.0;
     var period : CGFloat = 3.0;
     var lineShape : CAShapeLayer?;
@@ -33,18 +33,23 @@ import UIKit
         if let lineShape = lineShape {
            lineShape.removeFromSuperlayer()
         }
+        
         lineShape = CAShapeLayer()
+        
         if let lineShape = lineShape {
             lineShape.path = bezierPath.CGPath
+            
             if let window = self.window{
                 lineShape.strokeColor = window.tintColor.CGColor
             }else{
                 lineShape.strokeColor = UIColor.blackColor().CGColor
             }
+            
             lineShape.fillColor = UIColor.clearColor().CGColor
             lineShape.lineWidth = 2.0
             lineShape.strokeStart = 0.0
             lineShape.strokeEnd = 1.0
+            
             self.layer.addSublayer(lineShape)
             
             if(animated){
