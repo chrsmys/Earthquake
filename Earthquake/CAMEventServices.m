@@ -36,7 +36,7 @@ static CAMEventServices *sharedInstance;
         _eventList =[NSMutableArray arrayWithArray:[_eventList sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
             NSDate *firstDate = [(CamEvent*)a getTimeOfEvent];
             NSDate *secondDate = [(CamEvent*)b getTimeOfEvent];
-            return [firstDate compare:secondDate];
+            return [secondDate compare:firstDate];
         }]];
     }
     return _eventList;
