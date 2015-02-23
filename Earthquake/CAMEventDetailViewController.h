@@ -10,7 +10,9 @@
 #import "CamEvent.h"
 @class CAMSeismograph;
 
-@interface CAMEventDetailViewController : UITableViewController
+@interface CAMEventDetailViewController : UITableViewController{
+    NSArray *keyDisplayOrder; //The order in which the values are displayed
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
 @property (strong, nonatomic) CamEvent *currentEvent;

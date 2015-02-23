@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    keyDisplayOrder = @[@"type", @"mag", @"magType", @"sig", @"status"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -44,16 +44,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 0;
+    return [keyDisplayOrder count];;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier"];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"EventDetailCell"];
+    cell.textLabel.text=[NSString stringWithFormat:@"%@: %@",[keyDisplayOrder objectAtIndex:indexPath.row], [[_currentEvent featureDictionary] objectForKey:[keyDisplayOrder objectAtIndex:indexPath.row]]];
     return cell;
 }
 
