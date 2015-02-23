@@ -55,7 +55,7 @@ static CAMEventServices *sharedInstance;
     
     if (!lastRefreshDate){
         //Get initial event load
-        query = [self constructQueryWithOptions:@{@"format" : @"geojson", @"limit" : @"20", @"orderby" : @"time"}];
+        query = [self constructQueryWithOptions:@{@"format" : @"geojson", @"limit" : @"20", @"orderby" : @"time", @"eventtype" : @"earthquake"}];
         lastRefreshDate = [NSDate date];
     }else{
         //Get results for events that happened after lastRefresh
