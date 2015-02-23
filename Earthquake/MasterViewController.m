@@ -48,15 +48,25 @@
 
 -(void)subscribeToNotifications{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleEventListChange) name:@"eventListChanged" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkError) name:@"ErrorRetrievingEvents" object:nil];
+    
 }
 -(void)unsubscribeToNotifications{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - EventServices Notifications
+
 -(void)handleEventListChange{
-    [self.tableView stopPullToRefreshAnimation];
+    [self.tableView performSelector:@selector(stopPullToRefreshAnimation) withObject:nil afterDelay:1.0];
+
     self.eventList = [[NSArray alloc] initWithArray:[[CAMEventServices sharedInstance] eventList] copyItems:NO];
     [self.tableView reloadData];
+}
+-(void)handleNetworkError{
+    [self.tableView stopPullToRefreshAnimation];
+    UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"Error Retrieving Events" message:@"Please verify you are connected to the internet" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
 }
 
 #pragma mark - TableView Delegate

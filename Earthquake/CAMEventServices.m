@@ -82,6 +82,7 @@ static CAMEventServices *sharedInstance;
 -(void)performQuery:(NSString *)query{
     NSURL *queryURL = [NSURL URLWithString:query];
     __weak CAMEventServices *weakself = self;
+    __weak NSNotificationCenter *weaknotificationCenter = [NSNotificationCenter defaultCenter];
     NSURLSessionDataTask *data = [[NSURLSession sharedSession] dataTaskWithURL:queryURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -90,7 +91,7 @@ static CAMEventServices *sharedInstance;
             }
         }
         else{
-            
+            [weaknotificationCenter postNotificationName:@"ErrorRetrievingEvents" object:nil];
         }
     }];
     [data resume];
