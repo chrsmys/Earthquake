@@ -10,6 +10,8 @@
 #import "CAMSettingsServices.h"
 #import "NSDateFormatter+Constructors.h"
 #import "CamEvent.h"
+#import "AFNetworking.h"
+
 @implementation CAMEventServices{
     
 }
@@ -17,7 +19,9 @@
 
 static CAMEventServices *sharedInstance;
 
- NSString *const apiURL = @"http://comcat.cr.usgs.gov/fdsnws/event/1/query";
+//http://earthquake.usgs.gov/fdsnws/event/1/
+
+ NSString *const apiURL = @"http://earthquake.usgs.gov/fdsnws/event/1/query";
 
 - (id)init{
     self=[super init];
@@ -86,32 +90,29 @@ static CAMEventServices *sharedInstance;
     [self performQuery:query];
 }
 
-
 /* 
     Performs the query and retrieves the results
  */
 - (void)performQuery:(NSString *)query{
     
-    
-    NSURL *queryURL = [NSURL URLWithString:query];
-    
-    //Create weak verions of objects so they don't get captured by the blocks
     __weak CAMEventServices *weakself = self;
     __weak NSNotificationCenter *weaknotificationCenter = [NSNotificationCenter defaultCenter];
-   
-    NSURLSessionDataTask *data = [[NSURLSession sharedSession] dataTaskWithURL:queryURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (!error) {
-            NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            if ([dictionary objectForKey:@"features"]) {
-                [weakself performSelectorOnMainThread:@selector(processEvents:) withObject:[dictionary objectForKey:@"features"] waitUntilDone:false];
-            }
-        }
-        else{
-            [weaknotificationCenter postNotificationName:@"ErrorRetrievingEvents" object:nil];
-        }
-    }];
     
-    [data resume];
+    AFHTTPRequestOperationManager *queryManager = [AFHTTPRequestOperationManager manager];
+    
+    [queryManager GET:query parameters:nil success:^(AFHTTPRequestOperation *operation, id response){
+        NSDictionary *dictionary = response;
+        if ([dictionary objectForKey:@"features"]) {
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+            [weakself performSelectorOnMainThread:@selector(processEvents:) withObject:[dictionary objectForKey:@"features"] waitUntilDone:false];
+            });
+            
+        }
+
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        [weaknotificationCenter postNotificationName:@"ErrorRetrievingEvents" object:nil];
+
+    }];
 }
 
 /*
